@@ -1,0 +1,660 @@
+{
+  "_meta": {
+    "description": "UI tap coordinates from logs/cv_bridge/screenshots (1920x1080 landscape).",
+    "coordinate_system": "Landscape display pixels matching EmulatorBridge saved PNGs.",
+    "format": "gen9_champions",
+    "notes": [
+      "Turn ends automatically after all slot commands (and targets) are chosen \u2014 no confirm button.",
+      "Tap dismiss_background (far right) or targets.overlay.close to exit a sub-menu without confirming.",
+      "Move slots 1-4 are canonical alphabetical slots on the active Pokemon being commanded.",
+      "Doubles: command slot A (left active) first, then slot B \u2014 the game advances automatically; no slot-select tap.",
+      "In-battle switch bench taps reuse teampreview.roster_slot_1..6; Switch in/Cancel are popup_offset deltas from that row tap.",
+      "Target selection uses the 2x2 overlay (20260624_232712) after move pick when a target is required.",
+      "Singles model outputs one index (0-17); doubles outputs (ca0, ca1) per slot (0-106 each)."
+    ],
+    "screenshot_dir": "logs/cv_bridge/screenshots"
+  },
+  "shared": {
+    "dismiss_background": [
+      1896,
+      483
+    ],
+    "navigation": {
+      "lobby_battle": [
+        1246,
+        396
+      ],
+      "lobby_box": [
+        1677,
+        287
+      ],
+      "lobby_recruit": [
+        1178,
+        690
+      ],
+      "lobby_train": [
+        1679,
+        492
+      ],
+      "lobby_shop": [
+        1637,
+        702
+      ],
+      "lobby_missions": [
+        470,
+        980
+      ],
+      "lobby_mailbox": [
+        640,
+        980
+      ],
+      "lobby_style": [
+        810,
+        980
+      ],
+      "lobby_submenu": [
+        980,
+        980
+      ],
+      "lobby_menu": [
+        1870,
+        55
+      ],
+      "ranked_back": [
+        95,
+        55
+      ],
+      "ranked_begin_matchmaking": [
+        1606,
+        931
+      ],
+      "ranked_change_music": [
+        1606,
+        820
+      ],
+      "ranked_cancel_matchmaking": [
+        1750,
+        636
+      ],
+      "ranked_check_rules": [
+        1580,
+        210
+      ]
+    },
+    "post_battle": {
+      "quit_battling": [
+        409,
+        990
+      ],
+      "edit_team": [
+        981,
+        990
+      ],
+      "continue_battling": [
+        1513,
+        990
+      ]
+    },
+    "battle": {
+      "main_menu": {
+        "fight": [
+          1784,
+          644
+        ],
+        "pokemon_switch_menu": [
+          1706,
+          850
+        ],
+        "battle_info": [
+          1782,
+          330
+        ],
+        "run_forfeit": [
+          196,
+          69
+        ]
+      },
+      "moves": {
+        "move_1": [
+          1614,
+          532
+        ],
+        "move_2": [
+          1623,
+          660
+        ],
+        "move_3": [
+          1614,
+          784
+        ],
+        "move_4": [
+          1622,
+          912
+        ],
+        "move_info": [
+          1734,
+          408
+        ],
+        "back": [
+          1744,
+          1024
+        ]
+      },
+      "gimmicks": {
+        "mega": [
+          1174,
+          812
+        ],
+        "tera": [
+          1176,
+          807
+        ]
+      },
+      "switch": {
+        "popup_offset": {
+          "_description": "Switch in / Cancel popup is anchored to the bench row tapped. Add offset to teampreview.roster_slot_N tap.",
+          "reference_roster_slot": 3,
+          "reference_screenshot": "20260624_232626.png",
+          "switch_in": [
+            148,
+            200
+          ],
+          "cancel": [
+            154,
+            273
+          ]
+        },
+        "back": [
+          1827,
+          1017
+        ]
+      },
+      "force_switch": {
+        "_description": "Forced replacement after a faint. The party list is already open (no pokemon_switch_menu tap). Tap an alive slot row, then confirm via popup_offset (Switch in / Cancel anchored to that row).",
+        "popup_offset": {
+          "_description": "Switch in / Cancel popup deltas from the tapped force_switch.slot_N row. Calibrate with annotate_actions recipe 'battle_force_switch'.",
+          "reference_slot": 3,
+          "switch_in": [
+            140,
+            91
+          ],
+          "cancel": [
+            140,
+            178
+          ]
+        },
+        "slot_1": [
+          258,
+          312
+        ],
+        "slot_2": [
+          258,
+          436
+        ],
+        "slot_3": [
+          258,
+          562
+        ],
+        "slot_4": [
+          258,
+          688
+        ],
+        "slot_5": [
+          258,
+          814
+        ],
+        "slot_6": [
+          258,
+          940
+        ]
+      },
+      "targets": {
+        "overlay": {
+          "opp_slot_a": [
+            672,
+            370
+          ],
+          "opp_slot_b": [
+            1120,
+            356
+          ],
+          "ally_slot_a": [
+            705,
+            736
+          ],
+          "ally_slot_b": [
+            1203,
+            729
+          ],
+          "close": [
+            1372,
+            1006
+          ]
+        }
+      },
+      "turn_flow": {
+        "back": [
+          1725,
+          1030
+        ],
+        "hide_summary": [
+          1272,
+          1016
+        ],
+        "auto_end_turn": true
+      },
+      "dialogs": {
+        "forfeit_no": [
+          780,
+          580
+        ],
+        "forfeit_yes": [
+          1100,
+          580
+        ]
+      }
+    },
+    "perception_regions": {
+      "loading_indicator": [
+        1680,
+        780,
+        240,
+        140
+      ],
+      "communicating_banner": [
+        760,
+        280,
+        400,
+        80
+      ],
+      "decision_state_move_timer": [
+        1780,
+        234,
+        62,
+        45
+      ],
+      "command_menu_fight_button": [
+        1678,
+        546,
+        215,
+        202
+      ],
+      "move_panel": [
+        1356,
+        462,
+        546,
+        510
+      ],
+      "target_overlay_panel": [
+        362,
+        98,
+        1201,
+        942
+      ],
+      "teampreview_header": [
+        700,
+        80,
+        520,
+        120
+      ],
+      "teampreview_prompt": [
+        640,
+        210,
+        460,
+        140
+      ],
+      "move_select_marker": [
+        1630,
+        385,
+        300,
+        55
+      ],
+      "force_switch_hp_1": [
+        120,
+        284,
+        200,
+        56
+      ],
+      "force_switch_hp_2": [
+        120,
+        408,
+        200,
+        56
+      ],
+      "force_switch_hp_3": [
+        120,
+        534,
+        200,
+        56
+      ],
+      "force_switch_hp_4": [
+        120,
+        660,
+        200,
+        56
+      ],
+      "force_switch_hp_5": [
+        120,
+        786,
+        200,
+        56
+      ],
+      "force_switch_hp_6": [
+        120,
+        912,
+        200,
+        56
+      ],
+      "ability_item_popup_left": [
+        0,
+        350,
+        430,
+        220
+      ],
+      "ability_item_popup_right": [
+        1490,
+        350,
+        430,
+        220
+      ],
+      "teampreview_selection_counter": [
+        80,
+        900,
+        200,
+        80
+      ],
+      "player_active_hp_slot_a": [
+        248,
+        1005,
+        156,
+        47
+      ],
+      "player_active_hp_slot_b": [
+        645,
+        1005,
+        155,
+        51
+      ],
+      "opp_active_hp_slot_a": [
+        1312,
+        111,
+        138,
+        61
+      ],
+      "opp_active_hp_slot_b": [
+        1720,
+        122,
+        124,
+        52
+      ],
+      "battle_log_text": [
+        20,
+        780,
+        700,
+        120
+      ],
+      "battle_action_log": [
+        286,
+        792,
+        1313,
+        122
+      ],
+      "summary_overlay_center": [
+        400,
+        120,
+        1120,
+        840
+      ],
+      "switch_popup_left": [
+        80,
+        450,
+        280,
+        280
+      ],
+      "results_bottom_buttons": [
+        120,
+        910,
+        1680,
+        150
+      ],
+      "player_active_sprite_slot_a": [
+        50,
+        936,
+        91,
+        99
+      ],
+      "player_active_sprite_slot_b": [
+        436,
+        934,
+        118,
+        101
+      ],
+      "opp_active_sprite_slot_a": [
+        1084,
+        42,
+        116,
+        120
+      ],
+      "opp_active_sprite_slot_b": [
+        1484,
+        45,
+        115,
+        111
+      ]
+    }
+  },
+  "teampreview": {
+    "roster_slot_1": [
+      258,
+      211
+    ],
+    "roster_slot_2": [
+      258,
+      337
+    ],
+    "roster_slot_3": [
+      258,
+      463
+    ],
+    "roster_slot_4": [
+      258,
+      589
+    ],
+    "roster_slot_5": [
+      258,
+      715
+    ],
+    "roster_slot_6": [
+      258,
+      826
+    ],
+    "confirm_selection": [
+      425,
+      943
+    ],
+    "show_summary": [
+      855,
+      932
+    ],
+    "ally_name_slots": {
+      "slot_1": [
+        70,
+        153,
+        240,
+        50
+      ],
+      "slot_2": [
+        70,
+        279,
+        240,
+        50
+      ],
+      "slot_3": [
+        70,
+        405,
+        240,
+        50
+      ],
+      "slot_4": [
+        70,
+        531,
+        240,
+        50
+      ],
+      "slot_5": [
+        70,
+        657,
+        240,
+        50
+      ],
+      "slot_6": [
+        70,
+        768,
+        240,
+        50
+      ]
+    },
+    "enemy_sprite_slots": {
+      "slot_1": [
+        1618,
+        164,
+        96,
+        102
+      ],
+      "slot_2": [
+        1618,
+        286,
+        98,
+        106
+      ],
+      "slot_3": [
+        1622,
+        414,
+        98,
+        104
+      ],
+      "slot_4": [
+        1624,
+        537,
+        96,
+        108
+      ],
+      "slot_5": [
+        1628,
+        663,
+        94,
+        105
+      ],
+      "slot_6": [
+        1626,
+        783,
+        100,
+        113
+      ]
+    },
+    "ally_sprite_slots": {
+      "slot_1": [
+        494,
+        170,
+        94,
+        85
+      ],
+      "slot_2": [
+        498,
+        294,
+        94,
+        88
+      ],
+      "slot_3": [
+        495,
+        418,
+        99,
+        92
+      ],
+      "slot_4": [
+        500,
+        546,
+        94,
+        87
+      ],
+      "slot_5": [
+        492,
+        670,
+        102,
+        90
+      ],
+      "slot_6": [
+        504,
+        798,
+        87,
+        87
+      ]
+    }
+  },
+  "singles": {
+    "teampreview_pick_count": 3,
+    "bench_switch_slots": 2,
+    "switch_bench_1": [
+      258,
+      463
+    ],
+    "switch_bench_2": [
+      258,
+      589
+    ],
+    "targets": {
+      "foe_default": "shared.battle.targets.overlay.opp_slot_a",
+      "self_default": "shared.battle.targets.overlay.ally_slot_a"
+    }
+  },
+  "doubles": {
+    "teampreview_pick_count": 4,
+    "bench_switch_slots": 6,
+    "_switch_bench_note": "Doubles switch uses teampreview.roster_slot_N directly; keys below are legacy aliases for singles-style lookup only.",
+    "switch_bench_1": [
+      258,
+      211
+    ],
+    "switch_bench_2": [
+      258,
+      337
+    ],
+    "switch_bench_3": [
+      258,
+      463
+    ],
+    "switch_bench_4": [
+      258,
+      589
+    ],
+    "switch_bench_5": [
+      258,
+      715
+    ],
+    "switch_bench_6": [
+      258,
+      826
+    ]
+  },
+  "_screenshot_index": {
+    "20260619_041729.png": "navigation.lobby",
+    "20260619_041749.png": "navigation.matchmaking",
+    "20260619_041758.png": "system.loading",
+    "20260619_041802.png": "teampreview.singles.empty",
+    "20260619_041821.png": "teampreview.singles.selected",
+    "20260619_041902.png": "battle.singles.command_menu",
+    "20260619_041913.png": "battle.shared.move_menu",
+    "20260619_042251.png": "post_battle.results",
+    "20260624_232305.png": "navigation.ranked_doubles",
+    "20260624_232331.png": "teampreview.doubles.empty",
+    "20260624_232357.png": "teampreview.doubles.selected",
+    "20260624_232432.png": "battle.doubles.command_menu",
+    "20260624_232439.png": "battle.doubles.move_menu_mega",
+    "20260624_232613.png": "battle.doubles.command_menu_after_slot_a",
+    "20260624_232626.png": "battle.doubles.switch_popup",
+    "20260624_232712.png": "battle.doubles.target_overlay_focus_blast",
+    "20260624_232724.png": "battle.doubles.target_overlay_dragon_dance",
+    "20260624_232816.png": "system.communicating",
+    "20260624_232854.png": "post_battle.results_doubles"
+  }
+}

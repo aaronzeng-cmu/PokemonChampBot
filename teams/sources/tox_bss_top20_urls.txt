@@ -1,0 +1,23 @@
+# Battle Stadium Singles Season 1 Top-20 (Regulation M-A; Season M-1)
+# Source: https://tox.hatenablog.com/entry/2026/05/17/Battle_Stadium_Singles_blog_%E2%80%94_Season_1_Top-20_Team_Listing_%28Regulation_M-A%3B_Season_M-1%29
+# Teams #4 and #15 were not published.
+#
+# rank | description | pokepast.es URL
+01|Lucario & Floette-Mega|https://pokepast.es/cac72a687648f02e
+02|Glimmora & Starmie-Mega|https://pokepast.es/411c7b57b0fa893d
+03|Scizor & Blastoise-Mega|https://pokepast.es/20d7a852e04a5aad
+05|Charizard-Y & Gyarados-Mega|https://pokepast.es/5b07378553365fd8
+06|Sableye & Lucario-Mega|https://pokepast.es/5de3aaace840ca08
+07|Scizor & Gengar-Mega|https://pokepast.es/6aa0543cb60748fa
+08|Starmie & Floette-Mega|https://pokepast.es/41dc39202bf9294d
+09|Dragonite & Floette-Mega|https://pokepast.es/bfbc39bcffa9d576
+10|Glimmora & Starmie-Mega|https://pokepast.es/92034174178f66e9
+11|Gengar-Mega|https://pokepast.es/afddb73645dbd4e0
+12|Scovillain & Gengar-Mega|https://pokepast.es/5003acfe0bdb7fc5
+13|Lucario & Dragonite-Mega|https://pokepast.es/558e098e4e75a136
+14|Charizard-Y & Lucario-Mega|https://pokepast.es/8067e6509ccd277c
+16|Scovillain & Lopunny-Mega|https://pokepast.es/b023ffb6e378bd33
+17|Starmie & Skarmory & Glimmora-Mega|https://pokepast.es/155d039db037d7ec
+18|Lucario & Gengar-Mega|https://pokepast.es/76841c0ae8eb1cde
+19|Scizor & Gyarados & Floette-Mega|https://pokepast.es/fc360a8f200a2af0
+20|Venusaur & Floette-Mega|https://pokepast.es/f7892184a81c58e9

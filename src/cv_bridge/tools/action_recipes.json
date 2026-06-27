@@ -1,0 +1,205 @@
+{
+  "_meta": {
+    "description": "Guided tap-point recipes for annotate_actions.py. Click each target on the listed screenshot.",
+    "point_format": "[x, y] in landscape PNG pixels (1920x1080)",
+    "output_dir": "logs/cv_bridge/analysis/action_annotations"
+  },
+  "recipes": [
+    {
+      "id": "battle_command_menu_doubles",
+      "screenshot": "20260624_232432.png",
+      "summary": "Doubles turn command menu (Fight / Pokémon / Info / Run)",
+      "points": [
+        {
+          "path": "shared.battle.main_menu.fight",
+          "title": "Fight",
+          "hint": "Center of the orange Fight button on the right command panel."
+        },
+        {
+          "path": "shared.battle.main_menu.pokemon_switch_menu",
+          "title": "Pokémon",
+          "hint": "Center of the Pokémon / switch button below Fight."
+        },
+        {
+          "path": "shared.battle.main_menu.battle_info",
+          "title": "Battle info",
+          "hint": "Center of the info / summary button above Fight."
+        },
+        {
+          "path": "shared.battle.main_menu.run_forfeit",
+          "title": "Run / forfeit",
+          "hint": "Top-left back / forfeit control."
+        },
+        {
+          "path": "shared.dismiss_background",
+          "title": "Dismiss background",
+          "hint": "Far-right edge tap used to close sub-menus without confirming."
+        }
+      ]
+    },
+    {
+      "id": "battle_move_menu",
+      "screenshot": "20260624_232439.png",
+      "summary": "Move selection panel (4 moves + gimmicks + back)",
+      "points": [
+        {
+          "path": "shared.battle.moves.move_1",
+          "title": "Move slot 1",
+          "hint": "Center of the top move row (canonical alphabetical slot 1)."
+        },
+        {
+          "path": "shared.battle.moves.move_2",
+          "title": "Move slot 2",
+          "hint": "Second move row from the top."
+        },
+        {
+          "path": "shared.battle.moves.move_3",
+          "title": "Move slot 3",
+          "hint": "Third move row."
+        },
+        {
+          "path": "shared.battle.moves.move_4",
+          "title": "Move slot 4",
+          "hint": "Bottom move row."
+        },
+        {
+          "path": "shared.battle.moves.move_info",
+          "title": "Move info",
+          "hint": "Small info / type icon area above move 1 (optional detail tap)."
+        },
+        {
+          "path": "shared.battle.moves.back",
+          "title": "Back",
+          "hint": "Bottom-right back control returning to the command menu."
+        },
+        {
+          "path": "shared.battle.gimmicks.mega",
+          "title": "Mega Evolution",
+          "hint": "Mega button when visible on the move panel."
+        },
+        {
+          "path": "shared.battle.gimmicks.tera",
+          "title": "Terastallize",
+          "hint": "Tera button when visible on the move panel."
+        }
+      ]
+    },
+    {
+      "id": "battle_target_overlay",
+      "screenshot": "20260624_232712.png",
+      "summary": "Target picker overlay (2x2 grid after choosing a targeted move)",
+      "points": [
+        {
+          "path": "shared.battle.targets.overlay.opp_slot_a",
+          "title": "Opponent slot A",
+          "hint": "Top-left target cell (left opponent)."
+        },
+        {
+          "path": "shared.battle.targets.overlay.opp_slot_b",
+          "title": "Opponent slot B",
+          "hint": "Top-right target cell (right opponent)."
+        },
+        {
+          "path": "shared.battle.targets.overlay.ally_slot_a",
+          "title": "Ally slot A",
+          "hint": "Bottom-left target cell (your left active / self)."
+        },
+        {
+          "path": "shared.battle.targets.overlay.ally_slot_b",
+          "title": "Ally slot B",
+          "hint": "Bottom-right target cell (your right active)."
+        },
+        {
+          "path": "shared.battle.targets.overlay.close",
+          "title": "Close overlay",
+          "hint": "Close / cancel button on the target panel."
+        }
+      ]
+    },
+    {
+      "id": "battle_switch_popup",
+      "screenshot": "20260624_232626.png",
+      "summary": "Switch-in / Cancel popup offsets (relative to tapped bench row)",
+      "reference_point": "teampreview.roster_slot_3",
+      "points": [
+        {
+          "path": "shared.battle.switch.popup_offset.switch_in",
+          "title": "Switch in",
+          "hint": "On 20260624_232626 (Garchomp / roster row 3 selected): click Switch in. Saved as offset from teampreview.roster_slot_3."
+        },
+        {
+          "path": "shared.battle.switch.popup_offset.cancel",
+          "title": "Cancel switch",
+          "hint": "Click Cancel on the same popup. Offset is computed vs roster_slot_3."
+        },
+        {
+          "path": "shared.battle.switch.back",
+          "title": "Back",
+          "hint": "Bottom-right Back button (fixed screen position, not relative to popup)."
+        }
+      ]
+    },
+    {
+      "id": "battle_force_switch",
+      "screenshot": "20260624_232626.png",
+      "summary": "Forced replacement popup (Switch in / Cancel) after a faint, anchored to the tapped party row",
+      "reference_point": "shared.battle.force_switch.slot_3",
+      "points": [
+        {
+          "path": "shared.battle.force_switch.popup_offset.switch_in",
+          "title": "Switch in",
+          "hint": "On 20260624_232626 the 3rd party row (Garchomp) is selected and its Switch in / Cancel popup is open. Click 'Switch in'. Saved as an offset from force_switch.slot_3 so it applies to whichever row gets tapped."
+        },
+        {
+          "path": "shared.battle.force_switch.popup_offset.cancel",
+          "title": "Cancel switch",
+          "hint": "Click 'Cancel' on the same popup. Also stored as an offset from force_switch.slot_3."
+        }
+      ]
+    },
+    {
+      "id": "battle_command_menu_singles",
+      "screenshot": "20260619_041902.png",
+      "summary": "Singles turn command menu",
+      "points": [
+        {
+          "path": "shared.battle.main_menu.fight",
+          "title": "Fight",
+          "hint": "Center of the Fight button on the right panel."
+        },
+        {
+          "path": "shared.battle.main_menu.pokemon_switch_menu",
+          "title": "Pokémon",
+          "hint": "Pokémon / switch button."
+        },
+        {
+          "path": "shared.battle.main_menu.battle_info",
+          "title": "Battle info",
+          "hint": "Info button above Fight."
+        },
+        {
+          "path": "shared.battle.main_menu.run_forfeit",
+          "title": "Run / forfeit",
+          "hint": "Top-left forfeit control."
+        }
+      ]
+    },
+    {
+      "id": "battle_turn_flow",
+      "screenshot": "20260624_232621.png",
+      "summary": "Battle summary overlay recovery taps",
+      "points": [
+        {
+          "path": "shared.battle.turn_flow.hide_summary",
+          "title": "Hide summary",
+          "hint": "Dismiss the mid-battle summary / stats overlay."
+        },
+        {
+          "path": "shared.battle.turn_flow.back",
+          "title": "Back",
+          "hint": "Bottom-right back from summary or sub-menu."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+Lucario-Mega @ Lucarionite  
+Ability: Adaptability  
+Level: 50  
+EVs: 2 HP / 32 Atk / 32 Spe  
+Jolly Nature  
+- Close Combat  
+- Extreme Speed  
+- Meteor Mash  
+- Swords Dance
+
+Charizard-Mega-Y @ Charizardite Y  
+Ability: Drought  
+Level: 50  
+EVs: 29 Def / 17 SpA / 20 Spe  
+Timid Nature  
+- Substitute  
+- Flamethrower  
+- Dragon Pulse  
+- Solar Beam
+
+Hippowdon @ Leftovers  
+Ability: Sand Stream  
+Level: 50  
+EVs: 32 HP / 12 Def / 22 SpD  
+Impish Nature  
+- Earthquake  
+- Stealth Rock  
+- Yawn  
+- Whirlwind
+
+Rotom-Wash @ Sitrus Berry  
+Ability: Levitate  
+Level: 50  
+EVs: 32 HP / 13 Def / 14 SpD / 7 Spe  
+Bold Nature  
+- Thunderbolt  
+- Hydro Pump  
+- Will-O-Wisp  
+- Volt Switch
+
+Meowscarada @ Choice Scarf  
+Ability: Protean  
+Level: 50  
+EVs: 8 HP / 13 Atk / 25 Def / 20 Spe  
+Jolly Nature  
+- Flower Trick  
+- Foul Play  
+- U-turn  
+- Power Gem
+
+Mimikyu @ Spell Tag  
+Ability: Disguise  
+Level: 50  
+EVs: 29 HP / 30 Atk / 4 Def / 3 Spe  
+Adamant Nature  
+- Shadow Sneak  
+- Shadow Claw  
+- Play Rough  
+- Swords Dance

@@ -1,0 +1,2 @@
+# Optional: install CUDA PyTorch after base requirements (see README).
+# pip install torch --index-url https://download.pytorch.org/whl/cu126

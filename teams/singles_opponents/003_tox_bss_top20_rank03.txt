@@ -1,0 +1,59 @@
+Scizor-Mega @ Scizorite  
+Ability: Technician  
+Level: 50  
+EVs: 30 HP / 32 Atk / 1 Def / 1 SpD / 2 Spe  
+Adamant Nature  
+- Bullet Punch  
+- Knock Off  
+- Close Combat  
+- Swords Dance
+
+Archaludon @ Sitrus Berry  
+Ability: Stamina  
+Level: 50  
+EVs: 32 HP / 11 Def / 22 SpD / 1 Spe  
+Bold Nature  
+- Stealth Rock  
+- Thunderbolt  
+- Dragon Tail  
+- Roar
+
+Blastoise-Mega @ Blastoisinite  
+Ability: Mega Launcher  
+Level: 50  
+EVs: 11 HP / 1 Def / 32 SpA / 22 Spe  
+Timid Nature  
+- Aura Sphere  
+- Dragon Pulse  
+- Shell Smash  
+- Water Pulse
+
+Vivillon-Fancy @ Leftovers  
+Ability: Compound Eyes  
+Level: 50  
+EVs: 2 HP / 32 SpA / 32 Spe  
+Timid Nature  
+- Substitute  
+- Sleep Powder  
+- Hurricane  
+- Quiver Dance
+
+Basculegion (M) @ Choice Scarf  
+Ability: Adaptability  
+Level: 50  
+EVs: 2 HP / 32 Atk / 32 Spe  
+Jolly Nature  
+- Wave Crash  
+- Last Respects  
+- Aqua Jet  
+- Flip Turn
+
+Gengar @ Focus Sash  
+Ability: Cursed Body  
+Level: 50  
+EVs: 2 HP / 32 SpA / 32 Spe  
+Timid Nature  
+- Icy Wind  
+- Taunt  
+- Shadow Ball  
+- Sludge Wave

@@ -1,0 +1,60 @@
+Samurott-Hisui @ Black Glasses  
+Ability: Sharpness  
+Level: 50  
+Shiny: Yes  
+EVs: 20 HP / 32 Atk / 2 Def / 2 SpD / 10 Spe  
+Adamant Nature  
+- Ceaseless Edge  
+- Razor Shell  
+- Sucker Punch  
+- Sacred Sword
+
+Starmie-Mega @ Starminite  
+Ability: Huge Power  
+Level: 50  
+EVs: 2 HP / 32 Atk / 32 Spe  
+Adamant Nature  
+- Ice Spinner  
+- Flip Turn  
+- Liquidation  
+- Aqua Jet
+
+Glimmora-Mega @ Glimmoranite  
+Ability: Adaptability  
+Level: 50  
+EVs: 1 HP / 1 Def / 32 SpA / 32 Spe  
+Modest Nature  
+- Sludge Wave  
+- Rock Polish  
+- Power Gem  
+- Earth Power
+
+Corviknight @ Sitrus Berry  
+Ability: Pressure  
+Level: 50  
+EVs: 32 HP / 32 Def / 2 SpD  
+Relaxed Nature  
+- U-turn  
+- Iron Defense  
+- Body Press  
+- Roost
+
+Bellibolt @ Leftovers  
+Ability: Electromorphosis  
+Level: 50  
+EVs: 31 HP / 4 Def / 31 SpD  
+Sassy Nature  
+- Toxic  
+- Parabolic Charge  
+- Slack Off  
+- Volt Switch
+
+Whimsicott @ Focus Sash  
+Ability: Prankster  
+Level: 50  
+EVs: 2 HP / 32 SpA / 32 Spe  
+Modest Nature  
+- Moonblast  
+- Endeavor  
+- Encore  
+- Tailwind

@@ -1,0 +1,176 @@
+{
+  "_meta": {
+    "description": "Guided region recipes for annotate_regions.py. Draw each box in order on the listed screenshot.",
+    "box_format": "[x, y, width, height] in landscape PNG pixels (1920x1080)",
+    "output_dir": "logs/cv_bridge/analysis/region_annotations"
+  },
+  "recipes": [
+    {
+      "id": "battle_active_doubles",
+      "screenshot": "20260624_232432.png",
+      "summary": "Active Pokémon on field (doubles command menu)",
+      "regions": [
+        {
+          "path": "shared.perception_regions.player_active_sprite_slot_a",
+          "title": "Player A — sprite icon",
+          "hint": "Tight box around the small menu/circular sprite in the LEFT bottom HUD panel (Raichu)."
+        },
+        {
+          "path": "shared.perception_regions.player_active_hp_slot_a",
+          "title": "Player A — HP bar",
+          "hint": "Box over the green HP bar and numeric HP text (e.g. 137/137) for the left panel."
+        },
+        {
+          "path": "shared.perception_regions.player_active_sprite_slot_b",
+          "title": "Player B — sprite icon",
+          "hint": "Sprite icon in the RIGHT bottom HUD panel (Gyarados). Do not overlap slot A."
+        },
+        {
+          "path": "shared.perception_regions.player_active_hp_slot_b",
+          "title": "Player B — HP bar",
+          "hint": "HP bar + numbers for the right player panel (e.g. 172/172)."
+        },
+        {
+          "path": "shared.perception_regions.opp_active_sprite_slot_a",
+          "title": "Opponent A — sprite icon",
+          "hint": "Sprite in the LEFT top opponent HUD panel (Azumarill)."
+        },
+        {
+          "path": "shared.perception_regions.opp_active_hp_slot_a",
+          "title": "Opponent A — HP bar",
+          "hint": "HP bar for left opponent (often shows 100%)."
+        },
+        {
+          "path": "shared.perception_regions.opp_active_sprite_slot_b",
+          "title": "Opponent B — sprite icon",
+          "hint": "Sprite in the RIGHT top opponent HUD panel (Heracross)."
+        },
+        {
+          "path": "shared.perception_regions.opp_active_hp_slot_b",
+          "title": "Opponent B — HP bar",
+          "hint": "HP bar for right opponent."
+        }
+      ]
+    },
+    {
+      "id": "teampreview",
+      "screenshot": "20260619_041802.png",
+      "summary": "Team preview (empty, no selection highlights) — ally + enemy sprites",
+      "regions": [
+        {
+          "path": "teampreview.ally_sprite_slots.slot_1",
+          "title": "Ally slot 1 — sprite",
+          "hint": "Menu sprite on row 1 of YOUR team (left column, top)."
+        },
+        {
+          "path": "teampreview.ally_sprite_slots.slot_2",
+          "title": "Ally slot 2 — sprite",
+          "hint": "Row 2 ally sprite."
+        },
+        {
+          "path": "teampreview.ally_sprite_slots.slot_3",
+          "title": "Ally slot 3 — sprite",
+          "hint": "Row 3 ally sprite."
+        },
+        {
+          "path": "teampreview.ally_sprite_slots.slot_4",
+          "title": "Ally slot 4 — sprite",
+          "hint": "Row 4 ally sprite."
+        },
+        {
+          "path": "teampreview.ally_sprite_slots.slot_5",
+          "title": "Ally slot 5 — sprite",
+          "hint": "Row 5 ally sprite."
+        },
+        {
+          "path": "teampreview.ally_sprite_slots.slot_6",
+          "title": "Ally slot 6 — sprite",
+          "hint": "Row 6 ally sprite (bottom)."
+        },
+        {
+          "path": "teampreview.enemy_sprite_slots.slot_1",
+          "title": "Enemy slot 1 — sprite",
+          "hint": "Opponent menu sprite row 1 (right column)."
+        },
+        {
+          "path": "teampreview.enemy_sprite_slots.slot_2",
+          "title": "Enemy slot 2 — sprite",
+          "hint": "Enemy row 2."
+        },
+        {
+          "path": "teampreview.enemy_sprite_slots.slot_3",
+          "title": "Enemy slot 3 — sprite",
+          "hint": "Enemy row 3."
+        },
+        {
+          "path": "teampreview.enemy_sprite_slots.slot_4",
+          "title": "Enemy slot 4 — sprite",
+          "hint": "Enemy row 4."
+        },
+        {
+          "path": "teampreview.enemy_sprite_slots.slot_5",
+          "title": "Enemy slot 5 — sprite",
+          "hint": "Enemy row 5."
+        },
+        {
+          "path": "teampreview.enemy_sprite_slots.slot_6",
+          "title": "Enemy slot 6 — sprite",
+          "hint": "Enemy row 6 (bottom)."
+        }
+      ]
+    },
+    {
+      "id": "battle_action_perception",
+      "screenshot": "20260624_232439.png",
+      "summary": "Perception ROIs on move menu (after Fight) — move panel + timer only",
+      "regions": [
+        {
+          "path": "shared.perception_regions.move_panel",
+          "title": "Move panel",
+          "hint": "Bounding box around the entire right-side move list (all 4 moves + gimmick buttons)."
+        },
+        {
+          "path": "shared.perception_regions.decision_state_move_timer",
+          "title": "Move timer",
+          "hint": "Countdown digits above the move panel (e.g. 45s)."
+        }
+      ]
+    },
+    {
+      "id": "battle_command_perception",
+      "screenshot": "20260624_232432.png",
+      "summary": "Perception ROIs on command menu (before Fight) — Fight button anchor",
+      "regions": [
+        {
+          "path": "shared.perception_regions.command_menu_fight_button",
+          "title": "Fight button ROI",
+          "hint": "Tight box on the orange Fight button on the command menu. Use 20260624_232432.png — not the move menu (Fight is replaced after tap)."
+        }
+      ]
+    },
+    {
+      "id": "battle_target_perception",
+      "screenshot": "20260624_232712.png",
+      "summary": "Perception ROI for target overlay detection",
+      "regions": [
+        {
+          "path": "shared.perception_regions.target_overlay_panel",
+          "title": "Target overlay panel",
+          "hint": "Box around the full 2x2 target grid including Close button."
+        }
+      ]
+    },
+    {
+      "id": "battle_log_text",
+      "screenshot": "20260624_232835.png",
+      "summary": "Bottom battle-log text box (moves / stat changes / faints / weather)",
+      "regions": [
+        {
+          "path": "shared.perception_regions.battle_action_log",
+          "title": "Battle action log",
+          "hint": "Wide box over the bottom-left/center text line (e.g. 'You defeated ...' or 'Gyarados's Attack rose!'). Make it wide enough for long stat-change sentences; keep height ~1 line to avoid the field below."
+        }
+      ]
+    }
+  ]
+}

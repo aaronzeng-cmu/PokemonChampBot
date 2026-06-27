@@ -1,0 +1,65 @@
+Kingambit @ Chople Berry
+Ability: Defiant
+Level: 50
+Tera Type: Flying
+EVs: 32 HP / 32 Atk / 1 SpD
+Adamant Nature
+- Kowtow Cleave
+- Low Kick
+- Sucker Punch
+- Protect
+
+Basculegion (M) @ Mystic Water
+Ability: Swift Swim
+Level: 50
+Tera Type: Ghost
+EVs: 32 Atk / 14 Def / 1 SpD / 18 Spe
+Adamant Nature
+- Wave Crash
+- Last Respects
+- Aqua Jet
+- Protect
+
+Charizard @ Charizardite Y
+Ability: Blaze
+Level: 50
+Tera Type: Grass
+EVs: 14 HP / 13 Def / 11 SpA / 13 Spe
+Modest Nature
+- Heat Wave
+- Solar Beam
+- Weather Ball
+- Protect
+
+Whimsicott @ Fairy Feather
+Ability: Prankster
+Level: 50
+Tera Type: Fairy
+EVs: 14 HP / 32 SpA / 19 Spe
+Timid Nature
+- Moonblast
+- Tailwind
+- Encore
+- Protect
+
+Garchomp (F) @ Sitrus Berry
+Ability: Rough Skin
+Level: 50
+Tera Type: Ground
+EVs: 10 HP / 30 Atk / 4 Def / 21 Spe
+Jolly Nature
+- Dragon Claw
+- Earthquake
+- Rock Slide
+- Poison Jab
+
+Glimmora (F) @ Focus Sash
+Ability: Toxic Debris
+Level: 50
+Tera Type: Poison
+EVs: 1 HP / 32 SpA / 32 Spe
+Modest Nature
+- Power Gem
+- Sludge Bomb
+- Earth Power
+- Spiky Shield

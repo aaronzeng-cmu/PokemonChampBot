@@ -1,0 +1,59 @@
+Charizard-Mega-Y @ Charizardite Y  
+Ability: Drought  
+Level: 50  
+EVs: 14 HP / 12 Def / 21 SpA / 19 Spe  
+Modest Nature  
+- Overheat  
+- Flamethrower  
+- Air Slash  
+- Dragon Pulse
+
+Mimikyu @ Fairy Feather  
+Ability: Disguise  
+Level: 50  
+EVs: 21 HP / 26 Atk / 19 Def  
+Adamant Nature  
+- Shadow Sneak  
+- Play Rough  
+- Drain Punch  
+- Swords Dance
+
+Garchomp @ Choice Scarf  
+Ability: Rough Skin  
+Level: 50  
+EVs: 2 HP / 32 Atk / 32 Spe  
+Adamant Nature  
+- Outrage  
+- Earthquake  
+- Rock Slide  
+- Stealth Rock
+
+Gyarados-Mega @ Gyaradosite  
+Ability: Mold Breaker  
+Level: 50  
+EVs: 5 HP / 32 Atk / 3 Def / 26 Spe  
+Jolly Nature  
+- Waterfall  
+- Earthquake  
+- Ice Fang  
+- Dragon Dance
+
+Aegislash @ Leftovers  
+Ability: Stance Change  
+Level: 50  
+EVs: 32 HP / 3 Def / 11 SpA / 20 SpD  
+Brave Nature  
+- King's Shield  
+- Iron Head  
+- Shadow Ball  
+- Shadow Sneak
+
+Milotic @ Lum Berry  
+Ability: Cute Charm  
+Level: 50  
+EVs: 32 HP / 27 Def / 7 Spe  
+Bold Nature  
+- Scald  
+- Ice Beam  
+- Haze  
+- Recover

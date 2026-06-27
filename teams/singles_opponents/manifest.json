@@ -1,0 +1,135 @@
+{
+  "source_page": "https://tox.hatenablog.com/entry/2026/05/17/Battle_Stadium_Singles_blog_%E2%80%94_Season_1_Top-20_Team_Listing_%28Regulation_M-A%3B_Season_M-1%29",
+  "urls_file": "C:\\Projects\\Fun\\PokemonChampBot\\teams\\sources\\tox_bss_top20_urls.txt",
+  "requested": 18,
+  "saved": 18,
+  "errors": [],
+  "teams": [
+    {
+      "file": "001_tox_bss_top20_rank01.txt",
+      "paste_id": "cac72a687648f02e",
+      "source": "tox_bss_top20",
+      "team_id": "rank01",
+      "description": "Lucario & Floette-Mega"
+    },
+    {
+      "file": "002_tox_bss_top20_rank02.txt",
+      "paste_id": "411c7b57b0fa893d",
+      "source": "tox_bss_top20",
+      "team_id": "rank02",
+      "description": "Glimmora & Starmie-Mega"
+    },
+    {
+      "file": "003_tox_bss_top20_rank03.txt",
+      "paste_id": "20d7a852e04a5aad",
+      "source": "tox_bss_top20",
+      "team_id": "rank03",
+      "description": "Scizor & Blastoise-Mega"
+    },
+    {
+      "file": "004_tox_bss_top20_rank05.txt",
+      "paste_id": "5b07378553365fd8",
+      "source": "tox_bss_top20",
+      "team_id": "rank05",
+      "description": "Charizard-Y & Gyarados-Mega"
+    },
+    {
+      "file": "005_tox_bss_top20_rank06.txt",
+      "paste_id": "5de3aaace840ca08",
+      "source": "tox_bss_top20",
+      "team_id": "rank06",
+      "description": "Sableye & Lucario-Mega"
+    },
+    {
+      "file": "006_tox_bss_top20_rank07.txt",
+      "paste_id": "6aa0543cb60748fa",
+      "source": "tox_bss_top20",
+      "team_id": "rank07",
+      "description": "Scizor & Gengar-Mega"
+    },
+    {
+      "file": "007_tox_bss_top20_rank08.txt",
+      "paste_id": "41dc39202bf9294d",
+      "source": "tox_bss_top20",
+      "team_id": "rank08",
+      "description": "Starmie & Floette-Mega"
+    },
+    {
+      "file": "008_tox_bss_top20_rank09.txt",
+      "paste_id": "bfbc39bcffa9d576",
+      "source": "tox_bss_top20",
+      "team_id": "rank09",
+      "description": "Dragonite & Floette-Mega"
+    },
+    {
+      "file": "009_tox_bss_top20_rank10.txt",
+      "paste_id": "92034174178f66e9",
+      "source": "tox_bss_top20",
+      "team_id": "rank10",
+      "description": "Glimmora & Starmie-Mega"
+    },
+    {
+      "file": "010_tox_bss_top20_rank11.txt",
+      "paste_id": "afddb73645dbd4e0",
+      "source": "tox_bss_top20",
+      "team_id": "rank11",
+      "description": "Gengar-Mega"
+    },
+    {
+      "file": "011_tox_bss_top20_rank12.txt",
+      "paste_id": "5003acfe0bdb7fc5",
+      "source": "tox_bss_top20",
+      "team_id": "rank12",
+      "description": "Scovillain & Gengar-Mega"
+    },
+    {
+      "file": "012_tox_bss_top20_rank13.txt",
+      "paste_id": "558e098e4e75a136",
+      "source": "tox_bss_top20",
+      "team_id": "rank13",
+      "description": "Lucario & Dragonite-Mega"
+    },
+    {
+      "file": "013_tox_bss_top20_rank14.txt",
+      "paste_id": "8067e6509ccd277c",
+      "source": "tox_bss_top20",
+      "team_id": "rank14",
+      "description": "Charizard-Y & Lucario-Mega"
+    },
+    {
+      "file": "014_tox_bss_top20_rank16.txt",
+      "paste_id": "b023ffb6e378bd33",
+      "source": "tox_bss_top20",
+      "team_id": "rank16",
+      "description": "Scovillain & Lopunny-Mega"
+    },
+    {
+      "file": "015_tox_bss_top20_rank17.txt",
+      "paste_id": "155d039db037d7ec",
+      "source": "tox_bss_top20",
+      "team_id": "rank17",
+      "description": "Starmie & Skarmory & Glimmora-Mega"
+    },
+    {
+      "file": "016_tox_bss_top20_rank18.txt",
+      "paste_id": "76841c0ae8eb1cde",
+      "source": "tox_bss_top20",
+      "team_id": "rank18",
+      "description": "Lucario & Gengar-Mega"
+    },
+    {
+      "file": "017_tox_bss_top20_rank19.txt",
+      "paste_id": "fc360a8f200a2af0",
+      "source": "tox_bss_top20",
+      "team_id": "rank19",
+      "description": "Scizor & Gyarados & Floette-Mega"
+    },
+    {
+      "file": "018_tox_bss_top20_rank20.txt",
+      "paste_id": "f7892184a81c58e9",
+      "source": "tox_bss_top20",
+      "team_id": "rank20",
+      "description": "Venusaur & Floette-Mega"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+# One pokepast.es or full paste URL per line (Reg M-A teams).
+# Re-run: python scripts/fetch_opponent_teams.py --target 50
+#
+# Examples:
+# https://pokepast.es/1be4197bbd926974
+#
+# Victory Road replica page (QR codes only — add VR Pastes links here manually):
+# https://victoryroad.pro/champions-replica/

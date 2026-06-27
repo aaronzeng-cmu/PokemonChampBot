@@ -1,0 +1,59 @@
+Pelipper @ Sitrus Berry  
+Ability: Drizzle  
+Level: 50  
+EVs: 32 HP / 30 Def / 4 SpD  
+Relaxed Nature  
+- Surf  
+- Hurricane  
+- Ice Beam  
+- U-turn
+
+Starmie-Mega @ Starminite  
+Ability: Natural Cure  
+Level: 50  
+EVs: 32 HP / 14 Atk / 20 SpD  
+Adamant Nature  
+- Liquidation  
+- Psycho Cut  
+- Aqua Jet  
+- Ice Spinner
+
+Basculegion (M) @ Choice Scarf  
+Ability: Adaptability  
+Level: 50  
+EVs: 32 Atk / 1 Def / 1 SpD / 32 Spe  
+Jolly Nature  
+- Wave Crash  
+- Aqua Jet  
+- Flip Turn  
+- Last Respects
+
+Greninja @ Black Glasses  
+Ability: Protean  
+Level: 50  
+EVs: 2 HP / 32 SpA / 32 Spe  
+Modest Nature  
+- Surf  
+- Dark Pulse  
+- Ice Beam  
+- Substitute
+
+Archaludon @ Leftovers  
+Ability: Stamina  
+Level: 50  
+EVs: 32 HP / 8 SpA / 26 Spe  
+Modest Nature  
+- Draco Meteor  
+- Flash Cannon  
+- Electro Shot  
+- Substitute
+
+Floette-Mega (F) @ Floettite  
+Ability: Fairy Aura  
+Level: 50  
+EVs: 26 HP / 6 Def / 16 SpA / 18 Spe  
+Modest Nature  
+- Misty Terrain  
+- Moonblast  
+- Draining Kiss  
+- Calm Mind

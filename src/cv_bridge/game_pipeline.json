@@ -1,0 +1,155 @@
+{
+  "_meta": {
+    "description": "Champions UI state machine from screenshot sessions 2026-06-19 (singles) and 2026-06-24 (doubles).",
+    "source_dir": "logs/cv_bridge/screenshots",
+    "resolution": [1920, 1080]
+  },
+
+  "formats": {
+    "singles": {
+      "model_output": "single action index 0-17 (SINGLES_ACTION_SIZE=18)",
+      "teampreview_picks": 3,
+      "executor": "ActionExecutor(battle_format='singles').plan_turn(ca)"
+    },
+    "doubles": {
+      "model_output": "tuple (ca0, ca1) each 0-106",
+      "teampreview_picks": 4,
+      "executor": "ActionExecutor(battle_format='doubles').plan_turn((ca0, ca1))"
+    }
+  },
+
+  "ui_rules": {
+    "no_confirm_turn": "Turn ends automatically once all slot commands and targets are chosen.",
+    "dismiss_submenu": "Tap shared.dismiss_background [1850,540] or targets.overlay.close to exit without confirming.",
+    "targeting_overlay": "After move selection, a 2x2 panel appears (opp top, allies bottom). Map offsets via action_executor.target_key_for_offset."
+  },
+
+  "states": {
+    "lobby": {
+      "screenshots": ["20260619_041729.png", "20260624_232305.png"],
+      "actions": {"start_ranked": {"tap": "shared.navigation.lobby_battle", "next": "ranked_lobby"}}
+    },
+    "ranked_lobby": {
+      "screenshots": ["20260619_041749.png", "20260624_232305.png"],
+      "detection": ["Ranked Battles header", "Single Battle or Double Battle label"],
+      "actions": {
+        "queue": {"tap": "shared.navigation.ranked_begin_matchmaking", "next": "matchmaking"},
+        "back": {"tap": "shared.navigation.ranked_back", "next": "lobby"}
+      }
+    },
+    "matchmaking": {
+      "screenshots": ["20260619_041749.png"],
+      "bot_behavior": "wait_until_transition",
+      "transitions": {"match_found": "loading"}
+    },
+    "communicating": {
+      "screenshots": ["20260624_232816.png"],
+      "detection": ["Communicating... text center screen"],
+      "bot_behavior": "wait_no_input"
+    },
+    "loading": {
+      "screenshots": ["20260619_041758.png"],
+      "bot_behavior": "wait_no_input",
+      "transitions": {"done": "teampreview"}
+    },
+    "teampreview": {
+      "screenshots": [
+        "20260619_041802.png",
+        "20260619_041821.png",
+        "20260624_232331.png",
+        "20260624_232357.png"
+      ],
+      "execution": {
+        "singles": ["tap teampreview.roster_slot_* x3", "tap teampreview.confirm_selection"],
+        "doubles": ["tap teampreview.roster_slot_* x4", "tap teampreview.confirm_selection"]
+      },
+      "transitions": {"confirmed": "battle"}
+    },
+    "battle": {
+      "substates": {
+        "animation": {
+          "screenshots": ["20260619_041855.png", "20260624_232426.png", "20260624_232835.png"],
+          "bot_behavior": "wait_no_input"
+        },
+        "command_menu": {
+          "screenshots": ["20260619_041902.png", "20260624_232432.png", "20260624_232613.png"],
+          "this_is_decision_state": true,
+          "notes": "Doubles always commands left active (slot A / ca0) first, then right active (slot B / ca1). The game advances between them automatically — no tap to pick which Pokémon to command.",
+          "model_input": {
+            "singles": "tensor -> ca",
+            "doubles": "tensor -> ca0, ca1"
+          }
+        },
+        "move_menu": {
+          "screenshots": ["20260619_041913.png", "20260624_232439.png", "20260624_232602.png"],
+          "entered_by": {"tap": "shared.battle.main_menu.fight"}
+        },
+        "target_overlay": {
+          "screenshots": ["20260624_232712.png", "20260624_232724.png"],
+          "detection": ["2x2 target grid with Close button"],
+          "mapping": {
+            "opp_slot_a": "top-left (offset 1)",
+            "opp_slot_b": "top-right (offset 2)",
+            "ally_slot_a": "bottom-left (offset -1, self slot A)",
+            "ally_slot_b": "bottom-right (offset -2, self slot B)",
+            "default_self_slot_a": "bottom-left when offset 0 commanding slot 0",
+            "default_self_slot_b": "bottom-right when offset 0 commanding slot 1"
+          },
+          "examples": [
+            "Fake Out -> opp_slot_a or opp_slot_b",
+            "Dragon Dance -> ally box for active slot (offset 0)",
+            "Focus Blast -> opp_slot_a (super effective hint in UI)"
+          ],
+          "entered_by": {"tap": "shared.battle.moves.move_N"},
+          "dismiss": ["shared.battle.targets.overlay.close", "shared.dismiss_background"]
+        },
+        "switch_popup": {
+          "screenshots": ["20260619_041954.png", "20260624_232626.png"],
+          "notes": "Bench row taps use teampreview.roster_slot_N. Switch in/Cancel popup is positioned relative to the row tapped; see shared.battle.switch.popup_offset.",
+          "confirm": {"tap": "bench_row + shared.battle.switch.popup_offset.switch_in"}
+        },
+        "summary_overlay": {
+          "screenshots": ["20260619_041947.png", "20260624_232621.png"],
+          "recovery": [
+            {"tap": "shared.battle.turn_flow.hide_summary"},
+            {"tap": "shared.battle.turn_flow.back"},
+            {"tap": "shared.dismiss_background"}
+          ]
+        }
+      },
+      "turn_loop": {
+        "singles": [
+          "infer ca",
+          "executor.plan_singles(ca) -> fight/move/target taps",
+          "turn auto-ends"
+        ],
+        "doubles": [
+          "infer ca0, ca1",
+          "executor.plan_doubles(ca0, ca1): full tap sequence for slot A (ca0), then slot B (ca1)",
+          "per slot: optional gimmick -> fight -> move -> target overlay if needed",
+          "game auto-advances from slot A to slot B; turn auto-ends after both slots complete"
+        ]
+      }
+    },
+    "results": {
+      "screenshots": ["20260619_042251.png", "20260624_232854.png"],
+      "actions": {
+        "continue": {"tap": "shared.post_battle.continue_battling", "next": "ranked_lobby"}
+      }
+    }
+  },
+
+  "end_to_end_flow": [
+    "lobby",
+    "ranked_lobby",
+    "matchmaking | communicating",
+    "loading",
+    "teampreview",
+    "battle.command_menu",
+    "battle.move_menu",
+    "battle.target_overlay (if targeted move)",
+    "battle.animation",
+    "battle.command_menu (next slot in doubles)",
+    "results"
+  ]
+}

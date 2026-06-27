@@ -1,0 +1,68 @@
+# ─────────────────────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ─────────────────────────────────────────────────────────────
+# Virtual environments
+# ─────────────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ─────────────────────────────────────────────────────────────
+# Secrets — NEVER commit real keys (see .env.example)
+# ─────────────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ─────────────────────────────────────────────────────────────
+# Large ML artifacts (regenerate via scripts/ — do NOT upload)
+# ─────────────────────────────────────────────────────────────
+models/
+logs/
+*.zip
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Datasets & scraped replay logs (multi-GB; rebuild with
+# scripts/scrape_replays.py + scripts/build_bc_mmap.py)
+data/processed/*
+!data/processed/.gitkeep
+data/raw_logs/*
+!data/raw_logs/.gitkeep
+data/raw_logs_singles/*
+!data/raw_logs_singles/.gitkeep
+
+# Generated CV sprite-match cache (rebuild via sprite_matcher.build_index)
+src/cv_bridge/assets/icon_index.pkl
+
+# ─────────────────────────────────────────────────────────────
+# Pokémon Showdown server / Node
+# ─────────────────────────────────────────────────────────────
+.pokemon-showdown/
+pokemon-showdown/
+node_modules/
+
+# ─────────────────────────────────────────────────────────────
+# Editor / OS
+# ─────────────────────────────────────────────────────────────
+.vscode/
+.cursor/plans/
+.DS_Store
+Thumbs.db

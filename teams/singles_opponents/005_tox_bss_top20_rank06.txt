@@ -1,0 +1,59 @@
+Hippowdon @ Sitrus Berry  
+Ability: Sand Stream  
+Level: 50  
+EVs: 32 HP / 2 Def / 32 SpD  
+Careful Nature  
+- Earthquake  
+- Stealth Rock  
+- Yawn  
+- Whirlwind
+
+Excadrill @ Soft Sand  
+Ability: Sand Rush  
+Level: 50  
+EVs: 6 HP / 25 Atk / 3 Def / 32 Spe  
+Jolly Nature  
+- Iron Head  
+- Earthquake  
+- Rock Slide  
+- Swords Dance
+
+Sableye-Mega @ Sablenite  
+Ability: Magic Bounce  
+Level: 50  
+EVs: 32 HP / 25 Def / 9 SpD  
+Impish Nature  
+- Recover  
+- Will-O-Wisp  
+- Foul Play  
+- Calm Mind
+
+Lucario-Mega @ Lucarionite  
+Ability: Adaptability  
+Level: 50  
+EVs: 2 HP / 32 Atk / 32 Spe  
+Jolly Nature  
+- Meteor Mash  
+- Bullet Punch  
+- Close Combat  
+- Swords Dance
+
+Greninja @ Choice Scarf  
+Ability: Protean  
+Level: 50  
+EVs: 4 HP / 4 Def / 30 SpA / 28 Spe  
+Modest Nature  
+- Surf  
+- Ice Beam  
+- Sludge Wave  
+- Dark Pulse
+
+Gyarados @ Leftovers  
+Ability: Intimidate  
+Level: 50  
+EVs: 21 HP / 11 Atk / 1 Def / 1 SpD / 32 Spe  
+Jolly Nature  
+- Power Whip  
+- Dragon Dance  
+- Taunt  
+- Waterfall

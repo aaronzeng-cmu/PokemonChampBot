@@ -1,0 +1,367 @@
+{
+  "target": 50,
+  "saved": 50,
+  "filter": {
+    "evs": "Yes",
+    "replica_status": "Yes (checkmark)",
+    "selection": "newest by Team ID (PC####)"
+  },
+  "discovered_rows_matching_filter": 829,
+  "errors": [],
+  "sources": {
+    "vgcpastes_sheet": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/export?format=csv&gid=791705272",
+    "sheet_page": "https://docs.google.com/spreadsheets/d/1axlwmzPA49rYkqXh7zHvAtSP-TKbM0ijGYBPRflLSWw/edit#gid=791705272"
+  },
+  "teams": [
+    {
+      "file": "001_vgcpastes_PC1102.txt",
+      "paste_id": "c17e51b1dee42c8c",
+      "source": "vgcpastes",
+      "team_id": "PC1102",
+      "description": "cona's PJCS 2026 Champion Team"
+    },
+    {
+      "file": "002_vgcpastes_PC1100.txt",
+      "paste_id": "34cb00fce368cd94",
+      "source": "vgcpastes",
+      "team_id": "PC1100",
+      "description": "alaninepoke's PJCS 2026 Runner Up Team"
+    },
+    {
+      "file": "003_vgcpastes_PC1097.txt",
+      "paste_id": "25efa05b579532c4",
+      "source": "vgcpastes",
+      "team_id": "PC1097",
+      "description": "nm_k_'s PJCS 2026 Top 4 Team (Seniors)"
+    },
+    {
+      "file": "004_vgcpastes_PC1093.txt",
+      "paste_id": "0288e9c0684e2d64",
+      "source": "vgcpastes",
+      "team_id": "PC1093",
+      "description": "koota's PJCS 2026 Top 16 Team"
+    },
+    {
+      "file": "005_vgcpastes_PC1092.txt",
+      "paste_id": "fcc2a27e816b096b",
+      "source": "vgcpastes",
+      "team_id": "PC1092",
+      "description": "shuuka_poke's PJCS 2026 Top 16 Team"
+    },
+    {
+      "file": "006_vgcpastes_PC1091.txt",
+      "paste_id": "bfc6d847b9a5b155",
+      "source": "vgcpastes",
+      "team_id": "PC1091",
+      "description": "kim0227poke's PJCS 2026 Top 16 Team"
+    },
+    {
+      "file": "007_vgcpastes_PC1090.txt",
+      "paste_id": "e229a2ef22019a24",
+      "source": "vgcpastes",
+      "team_id": "PC1090",
+      "description": "k_moou's PJCS 2026 Top 16 Team"
+    },
+    {
+      "file": "008_vgcpastes_PC1088.txt",
+      "paste_id": "34ea56eac7117e7d",
+      "source": "vgcpastes",
+      "team_id": "PC1088",
+      "description": "gahaku's PJCS 2026 Top 16 Team"
+    },
+    {
+      "file": "009_vgcpastes_PC1086.txt",
+      "paste_id": "62cd08e37dd8a3f4",
+      "source": "vgcpastes",
+      "team_id": "PC1086",
+      "description": "petrus_poke's PJCS 2026 Top 16 Team (Seniors)"
+    },
+    {
+      "file": "010_vgcpastes_PC1084.txt",
+      "paste_id": "4822f5cf8d604bbb",
+      "source": "vgcpastes",
+      "team_id": "PC1084",
+      "description": "sharuku's PJCS 2026 Top 32 Team"
+    },
+    {
+      "file": "011_vgcpastes_PC1082.txt",
+      "paste_id": "b213bddeffa079a9",
+      "source": "vgcpastes",
+      "team_id": "PC1082",
+      "description": "yunuponnu's PJCS 2026 Top 32 Team"
+    },
+    {
+      "file": "012_vgcpastes_PC1081.txt",
+      "paste_id": "f66bc2bd7c5dc2c7",
+      "source": "vgcpastes",
+      "team_id": "PC1081",
+      "description": "tuna_pokemon's PJCS 2026 Top 32 Team"
+    },
+    {
+      "file": "013_vgcpastes_PC1080.txt",
+      "paste_id": "7a39cd5fa040e472",
+      "source": "vgcpastes",
+      "team_id": "PC1080",
+      "description": "yakitori2525_2's PJCS 2026 Top 32 Team (Seniors)"
+    },
+    {
+      "file": "014_vgcpastes_PC1079.txt",
+      "paste_id": "a47c0dde19035dcc",
+      "source": "vgcpastes",
+      "team_id": "PC1079",
+      "description": "yuruyakapkmn's PJCS 2026 Top 32 Team (Seniors)"
+    },
+    {
+      "file": "015_vgcpastes_PC1078.txt",
+      "paste_id": "c14d09d1006755c2",
+      "source": "vgcpastes",
+      "team_id": "PC1078",
+      "description": "pokevgc_135's PJCS 2026 Top 32 Team (Seniors)"
+    },
+    {
+      "file": "016_vgcpastes_PC1077.txt",
+      "paste_id": "9100e43dd9e310e8",
+      "source": "vgcpastes",
+      "team_id": "PC1077",
+      "description": "Muscle's PJCS 2026 Top 64 Team"
+    },
+    {
+      "file": "017_vgcpastes_PC1076.txt",
+      "paste_id": "8816548523f658e2",
+      "source": "vgcpastes",
+      "team_id": "PC1076",
+      "description": "tomachikonoyubi's PJCS 2026 Top 64 Team"
+    },
+    {
+      "file": "018_vgcpastes_PC1075.txt",
+      "paste_id": "6196a14a0f7875eb",
+      "source": "vgcpastes",
+      "team_id": "PC1075",
+      "description": "yuminn10's PJCS 2026 Top 64 Team"
+    },
+    {
+      "file": "019_vgcpastes_PC1073.txt",
+      "paste_id": "0d37dc229cf10103",
+      "source": "vgcpastes",
+      "team_id": "PC1073",
+      "description": "kenpokemon222's PJCS 2026 Top 64 Team"
+    },
+    {
+      "file": "020_vgcpastes_PC1072.txt",
+      "paste_id": "dad0b45fb9bf1897",
+      "source": "vgcpastes",
+      "team_id": "PC1072",
+      "description": "yuuichi_u1's PJCS 2026 Top 64 Team"
+    },
+    {
+      "file": "021_vgcpastes_PC1071.txt",
+      "paste_id": "4ebcef7f27771f17",
+      "source": "vgcpastes",
+      "team_id": "PC1071",
+      "description": "Ruuto's PJCS 2026 Top 64 Team"
+    },
+    {
+      "file": "022_vgcpastes_PC1070.txt",
+      "paste_id": "026a40ed78e626ec",
+      "source": "vgcpastes",
+      "team_id": "PC1070",
+      "description": "natsumewato's PJCS 2026 Top 64 Team"
+    },
+    {
+      "file": "023_vgcpastes_PC1069.txt",
+      "paste_id": "4e3fe76ea9274387",
+      "source": "vgcpastes",
+      "team_id": "PC1069",
+      "description": "Betty's PJCS 2026 Top 64 Team"
+    },
+    {
+      "file": "024_vgcpastes_PC1067.txt",
+      "paste_id": "1c023d5c2384828e",
+      "source": "vgcpastes",
+      "team_id": "PC1067",
+      "description": "barudoru's PJCS 2026 Team"
+    },
+    {
+      "file": "025_vgcpastes_PC1066.txt",
+      "paste_id": "9a3c1183c27a88ad",
+      "source": "vgcpastes",
+      "team_id": "PC1066",
+      "description": "pikaso's PJCS 2026 Team"
+    },
+    {
+      "file": "026_vgcpastes_PC1065.txt",
+      "paste_id": "6e9d83bddf2fc15d",
+      "source": "vgcpastes",
+      "team_id": "PC1065",
+      "description": "Gio's PJCS 2026 Team"
+    },
+    {
+      "file": "027_vgcpastes_PC1064.txt",
+      "paste_id": "5c796892bed0f0d4",
+      "source": "vgcpastes",
+      "team_id": "PC1064",
+      "description": "marcofiero's Turin SPE 2026 Champion Team"
+    },
+    {
+      "file": "028_vgcpastes_PC1056.txt",
+      "paste_id": "932951bd958706c0",
+      "source": "vgcpastes",
+      "team_id": "PC1056",
+      "description": "Desu's Turin SPE 2026 Top 16 Team"
+    },
+    {
+      "file": "029_vgcpastes_PC1048.txt",
+      "paste_id": "3da5f5f5680ac29c",
+      "source": "vgcpastes",
+      "team_id": "PC1048",
+      "description": "Lorenzo Allemagna's Turin SPE 2026 Top 32 Team"
+    },
+    {
+      "file": "030_vgcpastes_PC1045.txt",
+      "paste_id": "23e4b433c36464b9",
+      "source": "vgcpastes",
+      "team_id": "PC1045",
+      "description": "schianchi_luca's Turin SPE 2026 Top 64 Team"
+    },
+    {
+      "file": "031_vgcpastes_PC1044.txt",
+      "paste_id": "5ac5e24a7c99e647",
+      "source": "vgcpastes",
+      "team_id": "PC1044",
+      "description": "Charalampos Frimas' Turin SPE 2026 Top 64 Team"
+    },
+    {
+      "file": "032_vgcpastes_PC1043.txt",
+      "paste_id": "8dcd70e1528f30c5",
+      "source": "vgcpastes",
+      "team_id": "PC1043",
+      "description": "JohnnyHax's Turin SPE 2026 Top 128 Team"
+    },
+    {
+      "file": "033_vgcpastes_PC1042.txt",
+      "paste_id": "fa89ffa4ca7f4926",
+      "source": "vgcpastes",
+      "team_id": "PC1042",
+      "description": "GiachyVGC's Turin SPE 2026 Top 128 Team"
+    },
+    {
+      "file": "034_vgcpastes_PC1041.txt",
+      "paste_id": "0431bc6a368e5b9d",
+      "source": "vgcpastes",
+      "team_id": "PC1041",
+      "description": "Javier Moreno's Turin SPE 2026 Top 128 Team"
+    },
+    {
+      "file": "035_vgcpastes_PC1040.txt",
+      "paste_id": "23ca1a1eb42824b4",
+      "source": "vgcpastes",
+      "team_id": "PC1040",
+      "description": "Alessandro Bugari's Turin SPE 2026 Team"
+    },
+    {
+      "file": "036_vgcpastes_PC1027.txt",
+      "paste_id": "9f3e47be6590332d",
+      "source": "vgcpastes",
+      "team_id": "PC1027",
+      "description": "dodoriosiriru's Excadrill Tyranitar Team"
+    },
+    {
+      "file": "037_vgcpastes_PC1026.txt",
+      "paste_id": "3f1172f05dbb7228",
+      "source": "vgcpastes",
+      "team_id": "PC1026",
+      "description": "Arsal and Ink's Indianapolis Regional 2026 Champion Team"
+    },
+    {
+      "file": "038_vgcpastes_PC1023.txt",
+      "paste_id": "0a6f9bce4ebcde20",
+      "source": "vgcpastes",
+      "team_id": "PC1023",
+      "description": "NailsOU's Indianapolis Regional 2026 Top 4 Team"
+    },
+    {
+      "file": "039_vgcpastes_PC1022.txt",
+      "paste_id": "0231c51d20f1567d",
+      "source": "vgcpastes",
+      "team_id": "PC1022",
+      "description": "Evan Scott & Jon-LukeVGC's Indianapolis Regional 2026 Top 8 Team"
+    },
+    {
+      "file": "040_vgcpastes_PC1019.txt",
+      "paste_id": "6a74ba3ac21cceb4",
+      "source": "vgcpastes",
+      "team_id": "PC1019",
+      "description": "William Brown's Indianapolis Regional 2026 Top 8 Team"
+    },
+    {
+      "file": "041_vgcpastes_PC1018.txt",
+      "paste_id": "898dd093bb3275f3",
+      "source": "vgcpastes",
+      "team_id": "PC1018",
+      "description": "Atmosphere's Indianapolis Regional 2026 Top 16 Team"
+    },
+    {
+      "file": "042_vgcpastes_PC1017.txt",
+      "paste_id": "082249f793d19a00",
+      "source": "vgcpastes",
+      "team_id": "PC1017",
+      "description": "Brendan DeWerth's Indianapolis Regional 2026 Top 16 Team"
+    },
+    {
+      "file": "043_vgcpastes_PC1013.txt",
+      "paste_id": "b5b111c75cfcf081",
+      "source": "vgcpastes",
+      "team_id": "PC1013",
+      "description": "Noah Gardner's Indianapolis Regional 2026 Top 16 Team"
+    },
+    {
+      "file": "044_vgcpastes_PC1008.txt",
+      "paste_id": "9cf888a5bba867c7",
+      "source": "vgcpastes",
+      "team_id": "PC1008",
+      "description": "luckysharmsvgc's Indianapolis Regional 2026 Top 64 Team"
+    },
+    {
+      "file": "045_vgcpastes_PC1007.txt",
+      "paste_id": "840b4a64e3141237",
+      "source": "vgcpastes",
+      "team_id": "PC1007",
+      "description": "Andrew Block's Indianapolis Regional 2026 Top 64 Team"
+    },
+    {
+      "file": "046_vgcpastes_PC1005.txt",
+      "paste_id": "87c3d2ef25525f04",
+      "source": "vgcpastes",
+      "team_id": "PC1005",
+      "description": "Dillon's Indianapolis Regional 2026 Top 128 Team"
+    },
+    {
+      "file": "047_vgcpastes_PC1004.txt",
+      "paste_id": "5c72db61ac35fa8c",
+      "source": "vgcpastes",
+      "team_id": "PC1004",
+      "description": "Matt Schmucker's Indianapolis Regional 2026 Top 128 Team"
+    },
+    {
+      "file": "048_vgcpastes_PC1003.txt",
+      "paste_id": "b1a50944ed6e3446",
+      "source": "vgcpastes",
+      "team_id": "PC1003",
+      "description": "Twilite's Indianapolis Regional 2026 Top 128 Team"
+    },
+    {
+      "file": "049_vgcpastes_PC1001.txt",
+      "paste_id": "2a93906d449630da",
+      "source": "vgcpastes",
+      "team_id": "PC1001",
+      "description": "Edward's Indianapolis Regional 2026 Top 256 Team"
+    },
+    {
+      "file": "050_vgcpastes_PC998.txt",
+      "paste_id": "c58bb27239cff0b1",
+      "source": "vgcpastes",
+      "team_id": "PC998",
+      "description": "dreamswgh's Indianapolis Regional 2026 Team"
+    }
+  ]
+}

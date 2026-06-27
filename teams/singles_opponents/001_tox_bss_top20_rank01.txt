@@ -1,0 +1,59 @@
+Lucario-Mega @ Lucarionite  
+Ability: Adaptability  
+Level: 50  
+EVs: 2 HP / 27 Atk / 9 Def / 28 Spe  
+Jolly Nature  
+- Stone Edge  
+- Close Combat  
+- Meteor Mash  
+- Extreme Speed
+
+Rotom-Wash @ Leftovers  
+Ability: Levitate  
+Level: 50  
+EVs: 32 HP / 10 Def / 24 SpD  
+Sassy Nature  
+- Volt Switch  
+- Hydro Pump  
+- Will-O-Wisp  
+- Pain Split
+
+Floette-Mega (F) @ Floettite  
+Ability: Fairy Aura  
+Level: 50  
+EVs: 10 Def / 24 SpA / 32 Spe  
+Timid Nature  
+- Light of Ruin  
+- Moonblast  
+- Draining Kiss  
+- Calm Mind
+
+Volcarona @ Lum Berry  
+Ability: Flame Body  
+Level: 50  
+EVs: 31 HP / 31 Def / 4 Spe  
+Bold Nature  
+- Fiery Dance  
+- Quiver Dance  
+- Will-O-Wisp  
+- Morning Sun
+
+Meowscarada @ Choice Scarf  
+Ability: Protean  
+Level: 50  
+EVs: 4 HP / 30 Atk / 20 Def / 12 Spe  
+Adamant Nature  
+- Flower Trick  
+- Thunder Punch  
+- Triple Axel  
+- U-turn
+
+Garchomp @ Sitrus Berry  
+Ability: Rough Skin  
+Level: 50  
+EVs: 32 HP / 32 Def / 2 Spe  
+Adamant Nature  
+- Dragon Tail  
+- Earthquake  
+- Spikes  
+- Stealth Rock

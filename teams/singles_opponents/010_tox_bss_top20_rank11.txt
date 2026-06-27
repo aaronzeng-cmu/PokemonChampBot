@@ -1,0 +1,59 @@
+Hippowdon @ Leftovers  
+Ability: Sand Stream  
+Level: 50  
+EVs: 32 HP / 32 Def / 2 SpD  
+Impish Nature  
+- Earthquake  
+- Yawn  
+- Protect  
+- Slack Off
+
+Gengar-Mega @ Gengarite  
+Ability: Shadow Tag  
+Level: 50  
+EVs: 30 HP / 12 SpA / 1 SpD / 23 Spe  
+Modest Nature  
+- Will-O-Wisp  
+- Hex  
+- Sludge Wave  
+- Icy Wind
+
+Meowscarada @ Choice Scarf  
+Ability: Protean  
+Level: 50  
+EVs: 24 HP / 24 Def / 18 Spe  
+Jolly Nature  
+- Foul Play  
+- Low Kick  
+- Thunder Punch  
+- U-turn
+
+Primarina @ Mystic Water  
+Ability: Torrent  
+Level: 50  
+EVs: 32 HP / 10 Def / 24 SpA  
+Modest Nature  
+- Surf  
+- Flip Turn  
+- Moonblast  
+- Encore
+
+Garchomp @ Focus Sash  
+Ability: Rough Skin  
+Level: 50  
+EVs: 32 Atk / 2 Def / 32 Spe  
+Adamant Nature  
+- Earthquake  
+- Fire Fang  
+- Scale Shot  
+- Swords Dance
+
+Archaludon @ Sitrus Berry  
+Ability: Stamina  
+Level: 50  
+EVs: 32 HP / 32 SpD / 2 Spe  
+Careful Nature  
+- Iron Head  
+- Dragon Tail  
+- Mirror Coat  
+- Stealth Rock

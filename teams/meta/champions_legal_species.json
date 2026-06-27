@@ -1,0 +1,1086 @@
+{
+  "format": "gen9championsvgc2026regma",
+  "count": 215,
+  "species": [
+    {
+      "id": "abomasnow",
+      "name": "Abomasnow",
+      "pikalytics_slug": "Abomasnow"
+    },
+    {
+      "id": "absol",
+      "name": "Absol",
+      "pikalytics_slug": "Absol"
+    },
+    {
+      "id": "aegislash",
+      "name": "Aegislash",
+      "pikalytics_slug": "Aegislash"
+    },
+    {
+      "id": "aerodactyl",
+      "name": "Aerodactyl",
+      "pikalytics_slug": "Aerodactyl"
+    },
+    {
+      "id": "aggron",
+      "name": "Aggron",
+      "pikalytics_slug": "Aggron"
+    },
+    {
+      "id": "alakazam",
+      "name": "Alakazam",
+      "pikalytics_slug": "Alakazam"
+    },
+    {
+      "id": "alcremie",
+      "name": "Alcremie",
+      "pikalytics_slug": "Alcremie"
+    },
+    {
+      "id": "altaria",
+      "name": "Altaria",
+      "pikalytics_slug": "Altaria"
+    },
+    {
+      "id": "ampharos",
+      "name": "Ampharos",
+      "pikalytics_slug": "Ampharos"
+    },
+    {
+      "id": "appletun",
+      "name": "Appletun",
+      "pikalytics_slug": "Appletun"
+    },
+    {
+      "id": "araquanid",
+      "name": "Araquanid",
+      "pikalytics_slug": "Araquanid"
+    },
+    {
+      "id": "arbok",
+      "name": "Arbok",
+      "pikalytics_slug": "Arbok"
+    },
+    {
+      "id": "arcanine",
+      "name": "Arcanine",
+      "pikalytics_slug": "Arcanine"
+    },
+    {
+      "id": "arcaninehisui",
+      "name": "Arcanine-Hisui",
+      "pikalytics_slug": "Arcanine-Hisui"
+    },
+    {
+      "id": "archaludon",
+      "name": "Archaludon",
+      "pikalytics_slug": "Archaludon"
+    },
+    {
+      "id": "ariados",
+      "name": "Ariados",
+      "pikalytics_slug": "Ariados"
+    },
+    {
+      "id": "armarouge",
+      "name": "Armarouge",
+      "pikalytics_slug": "Armarouge"
+    },
+    {
+      "id": "aromatisse",
+      "name": "Aromatisse",
+      "pikalytics_slug": "Aromatisse"
+    },
+    {
+      "id": "audino",
+      "name": "Audino",
+      "pikalytics_slug": "Audino"
+    },
+    {
+      "id": "aurorus",
+      "name": "Aurorus",
+      "pikalytics_slug": "Aurorus"
+    },
+    {
+      "id": "avalugg",
+      "name": "Avalugg",
+      "pikalytics_slug": "Avalugg"
+    },
+    {
+      "id": "avalugghisui",
+      "name": "Avalugg-Hisui",
+      "pikalytics_slug": "Avalugg-Hisui"
+    },
+    {
+      "id": "azumarill",
+      "name": "Azumarill",
+      "pikalytics_slug": "Azumarill"
+    },
+    {
+      "id": "banette",
+      "name": "Banette",
+      "pikalytics_slug": "Banette"
+    },
+    {
+      "id": "basculegion",
+      "name": "Basculegion",
+      "pikalytics_slug": "Basculegion"
+    },
+    {
+      "id": "basculegionf",
+      "name": "Basculegion-F",
+      "pikalytics_slug": "Basculegion-F"
+    },
+    {
+      "id": "bastiodon",
+      "name": "Bastiodon",
+      "pikalytics_slug": "Bastiodon"
+    },
+    {
+      "id": "beartic",
+      "name": "Beartic",
+      "pikalytics_slug": "Beartic"
+    },
+    {
+      "id": "beedrill",
+      "name": "Beedrill",
+      "pikalytics_slug": "Beedrill"
+    },
+    {
+      "id": "bellibolt",
+      "name": "Bellibolt",
+      "pikalytics_slug": "Bellibolt"
+    },
+    {
+      "id": "blastoise",
+      "name": "Blastoise",
+      "pikalytics_slug": "Blastoise"
+    },
+    {
+      "id": "camerupt",
+      "name": "Camerupt",
+      "pikalytics_slug": "Camerupt"
+    },
+    {
+      "id": "castform",
+      "name": "Castform",
+      "pikalytics_slug": "Castform"
+    },
+    {
+      "id": "ceruledge",
+      "name": "Ceruledge",
+      "pikalytics_slug": "Ceruledge"
+    },
+    {
+      "id": "chandelure",
+      "name": "Chandelure",
+      "pikalytics_slug": "Chandelure"
+    },
+    {
+      "id": "charizard",
+      "name": "Charizard",
+      "pikalytics_slug": "Charizard"
+    },
+    {
+      "id": "chesnaught",
+      "name": "Chesnaught",
+      "pikalytics_slug": "Chesnaught"
+    },
+    {
+      "id": "chimecho",
+      "name": "Chimecho",
+      "pikalytics_slug": "Chimecho"
+    },
+    {
+      "id": "clawitzer",
+      "name": "Clawitzer",
+      "pikalytics_slug": "Clawitzer"
+    },
+    {
+      "id": "clefable",
+      "name": "Clefable",
+      "pikalytics_slug": "Clefable"
+    },
+    {
+      "id": "cofagrigus",
+      "name": "Cofagrigus",
+      "pikalytics_slug": "Cofagrigus"
+    },
+    {
+      "id": "conkeldurr",
+      "name": "Conkeldurr",
+      "pikalytics_slug": "Conkeldurr"
+    },
+    {
+      "id": "corviknight",
+      "name": "Corviknight",
+      "pikalytics_slug": "Corviknight"
+    },
+    {
+      "id": "crabominable",
+      "name": "Crabominable",
+      "pikalytics_slug": "Crabominable"
+    },
+    {
+      "id": "decidueye",
+      "name": "Decidueye",
+      "pikalytics_slug": "Decidueye"
+    },
+    {
+      "id": "decidueyehisui",
+      "name": "Decidueye-Hisui",
+      "pikalytics_slug": "Decidueye-Hisui"
+    },
+    {
+      "id": "dedenne",
+      "name": "Dedenne",
+      "pikalytics_slug": "Dedenne"
+    },
+    {
+      "id": "delphox",
+      "name": "Delphox",
+      "pikalytics_slug": "Delphox"
+    },
+    {
+      "id": "diggersby",
+      "name": "Diggersby",
+      "pikalytics_slug": "Diggersby"
+    },
+    {
+      "id": "ditto",
+      "name": "Ditto",
+      "pikalytics_slug": "Ditto"
+    },
+    {
+      "id": "dragapult",
+      "name": "Dragapult",
+      "pikalytics_slug": "Dragapult"
+    },
+    {
+      "id": "dragonite",
+      "name": "Dragonite",
+      "pikalytics_slug": "Dragonite"
+    },
+    {
+      "id": "drampa",
+      "name": "Drampa",
+      "pikalytics_slug": "Drampa"
+    },
+    {
+      "id": "emboar",
+      "name": "Emboar",
+      "pikalytics_slug": "Emboar"
+    },
+    {
+      "id": "emolga",
+      "name": "Emolga",
+      "pikalytics_slug": "Emolga"
+    },
+    {
+      "id": "empoleon",
+      "name": "Empoleon",
+      "pikalytics_slug": "Empoleon"
+    },
+    {
+      "id": "espathra",
+      "name": "Espathra",
+      "pikalytics_slug": "Espathra"
+    },
+    {
+      "id": "espeon",
+      "name": "Espeon",
+      "pikalytics_slug": "Espeon"
+    },
+    {
+      "id": "excadrill",
+      "name": "Excadrill",
+      "pikalytics_slug": "Excadrill"
+    },
+    {
+      "id": "farigiraf",
+      "name": "Farigiraf",
+      "pikalytics_slug": "Farigiraf"
+    },
+    {
+      "id": "feraligatr",
+      "name": "Feraligatr",
+      "pikalytics_slug": "Feraligatr"
+    },
+    {
+      "id": "flapple",
+      "name": "Flapple",
+      "pikalytics_slug": "Flapple"
+    },
+    {
+      "id": "flareon",
+      "name": "Flareon",
+      "pikalytics_slug": "Flareon"
+    },
+    {
+      "id": "floetteeternal",
+      "name": "Floette-Eternal",
+      "pikalytics_slug": "Floette-Eternal"
+    },
+    {
+      "id": "florges",
+      "name": "Florges",
+      "pikalytics_slug": "Florges"
+    },
+    {
+      "id": "forretress",
+      "name": "Forretress",
+      "pikalytics_slug": "Forretress"
+    },
+    {
+      "id": "froslass",
+      "name": "Froslass",
+      "pikalytics_slug": "Froslass"
+    },
+    {
+      "id": "furfrou",
+      "name": "Furfrou",
+      "pikalytics_slug": "Furfrou"
+    },
+    {
+      "id": "gallade",
+      "name": "Gallade",
+      "pikalytics_slug": "Gallade"
+    },
+    {
+      "id": "garbodor",
+      "name": "Garbodor",
+      "pikalytics_slug": "Garbodor"
+    },
+    {
+      "id": "garchomp",
+      "name": "Garchomp",
+      "pikalytics_slug": "Garchomp"
+    },
+    {
+      "id": "gardevoir",
+      "name": "Gardevoir",
+      "pikalytics_slug": "Gardevoir"
+    },
+    {
+      "id": "garganacl",
+      "name": "Garganacl",
+      "pikalytics_slug": "Garganacl"
+    },
+    {
+      "id": "gengar",
+      "name": "Gengar",
+      "pikalytics_slug": "Gengar"
+    },
+    {
+      "id": "glaceon",
+      "name": "Glaceon",
+      "pikalytics_slug": "Glaceon"
+    },
+    {
+      "id": "glalie",
+      "name": "Glalie",
+      "pikalytics_slug": "Glalie"
+    },
+    {
+      "id": "glimmora",
+      "name": "Glimmora",
+      "pikalytics_slug": "Glimmora"
+    },
+    {
+      "id": "gliscor",
+      "name": "Gliscor",
+      "pikalytics_slug": "Gliscor"
+    },
+    {
+      "id": "golurk",
+      "name": "Golurk",
+      "pikalytics_slug": "Golurk"
+    },
+    {
+      "id": "goodra",
+      "name": "Goodra",
+      "pikalytics_slug": "Goodra"
+    },
+    {
+      "id": "goodrahisui",
+      "name": "Goodra-Hisui",
+      "pikalytics_slug": "Goodra-Hisui"
+    },
+    {
+      "id": "gourgeist",
+      "name": "Gourgeist",
+      "pikalytics_slug": "Gourgeist"
+    },
+    {
+      "id": "gourgeistsuper",
+      "name": "Gourgeist-Super",
+      "pikalytics_slug": "Gourgeist-Super"
+    },
+    {
+      "id": "greninja",
+      "name": "Greninja",
+      "pikalytics_slug": "Greninja"
+    },
+    {
+      "id": "gyarados",
+      "name": "Gyarados",
+      "pikalytics_slug": "Gyarados"
+    },
+    {
+      "id": "hatterene",
+      "name": "Hatterene",
+      "pikalytics_slug": "Hatterene"
+    },
+    {
+      "id": "hawlucha",
+      "name": "Hawlucha",
+      "pikalytics_slug": "Hawlucha"
+    },
+    {
+      "id": "heliolisk",
+      "name": "Heliolisk",
+      "pikalytics_slug": "Heliolisk"
+    },
+    {
+      "id": "heracross",
+      "name": "Heracross",
+      "pikalytics_slug": "Heracross"
+    },
+    {
+      "id": "hippowdon",
+      "name": "Hippowdon",
+      "pikalytics_slug": "Hippowdon"
+    },
+    {
+      "id": "houndoom",
+      "name": "Houndoom",
+      "pikalytics_slug": "Houndoom"
+    },
+    {
+      "id": "hydrapple",
+      "name": "Hydrapple",
+      "pikalytics_slug": "Hydrapple"
+    },
+    {
+      "id": "hydreigon",
+      "name": "Hydreigon",
+      "pikalytics_slug": "Hydreigon"
+    },
+    {
+      "id": "incineroar",
+      "name": "Incineroar",
+      "pikalytics_slug": "Incineroar"
+    },
+    {
+      "id": "infernape",
+      "name": "Infernape",
+      "pikalytics_slug": "Infernape"
+    },
+    {
+      "id": "jolteon",
+      "name": "Jolteon",
+      "pikalytics_slug": "Jolteon"
+    },
+    {
+      "id": "kangaskhan",
+      "name": "Kangaskhan",
+      "pikalytics_slug": "Kangaskhan"
+    },
+    {
+      "id": "kingambit",
+      "name": "Kingambit",
+      "pikalytics_slug": "Kingambit"
+    },
+    {
+      "id": "kleavor",
+      "name": "Kleavor",
+      "pikalytics_slug": "Kleavor"
+    },
+    {
+      "id": "klefki",
+      "name": "Klefki",
+      "pikalytics_slug": "Klefki"
+    },
+    {
+      "id": "kommoo",
+      "name": "Kommo-o",
+      "pikalytics_slug": "Kommo-o"
+    },
+    {
+      "id": "krookodile",
+      "name": "Krookodile",
+      "pikalytics_slug": "Krookodile"
+    },
+    {
+      "id": "leafeon",
+      "name": "Leafeon",
+      "pikalytics_slug": "Leafeon"
+    },
+    {
+      "id": "liepard",
+      "name": "Liepard",
+      "pikalytics_slug": "Liepard"
+    },
+    {
+      "id": "lopunny",
+      "name": "Lopunny",
+      "pikalytics_slug": "Lopunny"
+    },
+    {
+      "id": "lucario",
+      "name": "Lucario",
+      "pikalytics_slug": "Lucario"
+    },
+    {
+      "id": "luxray",
+      "name": "Luxray",
+      "pikalytics_slug": "Luxray"
+    },
+    {
+      "id": "lycanroc",
+      "name": "Lycanroc",
+      "pikalytics_slug": "Lycanroc"
+    },
+    {
+      "id": "lycanrocdusk",
+      "name": "Lycanroc-Dusk",
+      "pikalytics_slug": "Lycanroc-Dusk"
+    },
+    {
+      "id": "lycanrocmidnight",
+      "name": "Lycanroc-Midnight",
+      "pikalytics_slug": "Lycanroc-Midnight"
+    },
+    {
+      "id": "machamp",
+      "name": "Machamp",
+      "pikalytics_slug": "Machamp"
+    },
+    {
+      "id": "mamoswine",
+      "name": "Mamoswine",
+      "pikalytics_slug": "Mamoswine"
+    },
+    {
+      "id": "manectric",
+      "name": "Manectric",
+      "pikalytics_slug": "Manectric"
+    },
+    {
+      "id": "maushold",
+      "name": "Maushold",
+      "pikalytics_slug": "Maushold"
+    },
+    {
+      "id": "medicham",
+      "name": "Medicham",
+      "pikalytics_slug": "Medicham"
+    },
+    {
+      "id": "meganium",
+      "name": "Meganium",
+      "pikalytics_slug": "Meganium"
+    },
+    {
+      "id": "meowscarada",
+      "name": "Meowscarada",
+      "pikalytics_slug": "Meowscarada"
+    },
+    {
+      "id": "meowstic",
+      "name": "Meowstic",
+      "pikalytics_slug": "Meowstic"
+    },
+    {
+      "id": "meowsticf",
+      "name": "Meowstic-F",
+      "pikalytics_slug": "Meowstic-F"
+    },
+    {
+      "id": "milotic",
+      "name": "Milotic",
+      "pikalytics_slug": "Milotic"
+    },
+    {
+      "id": "mimikyu",
+      "name": "Mimikyu",
+      "pikalytics_slug": "Mimikyu"
+    },
+    {
+      "id": "morpeko",
+      "name": "Morpeko",
+      "pikalytics_slug": "Morpeko"
+    },
+    {
+      "id": "mrrime",
+      "name": "Mr. Rime",
+      "pikalytics_slug": "Mr. Rime"
+    },
+    {
+      "id": "mudsdale",
+      "name": "Mudsdale",
+      "pikalytics_slug": "Mudsdale"
+    },
+    {
+      "id": "ninetales",
+      "name": "Ninetales",
+      "pikalytics_slug": "Ninetales"
+    },
+    {
+      "id": "ninetalesalola",
+      "name": "Ninetales-Alola",
+      "pikalytics_slug": "Ninetales-Alola"
+    },
+    {
+      "id": "noivern",
+      "name": "Noivern",
+      "pikalytics_slug": "Noivern"
+    },
+    {
+      "id": "oranguru",
+      "name": "Oranguru",
+      "pikalytics_slug": "Oranguru"
+    },
+    {
+      "id": "orthworm",
+      "name": "Orthworm",
+      "pikalytics_slug": "Orthworm"
+    },
+    {
+      "id": "palafin",
+      "name": "Palafin",
+      "pikalytics_slug": "Palafin"
+    },
+    {
+      "id": "pangoro",
+      "name": "Pangoro",
+      "pikalytics_slug": "Pangoro"
+    },
+    {
+      "id": "passimian",
+      "name": "Passimian",
+      "pikalytics_slug": "Passimian"
+    },
+    {
+      "id": "pelipper",
+      "name": "Pelipper",
+      "pikalytics_slug": "Pelipper"
+    },
+    {
+      "id": "pidgeot",
+      "name": "Pidgeot",
+      "pikalytics_slug": "Pidgeot"
+    },
+    {
+      "id": "pikachu",
+      "name": "Pikachu",
+      "pikalytics_slug": "Pikachu"
+    },
+    {
+      "id": "pinsir",
+      "name": "Pinsir",
+      "pikalytics_slug": "Pinsir"
+    },
+    {
+      "id": "politoed",
+      "name": "Politoed",
+      "pikalytics_slug": "Politoed"
+    },
+    {
+      "id": "polteageist",
+      "name": "Polteageist",
+      "pikalytics_slug": "Polteageist"
+    },
+    {
+      "id": "polteageistantique",
+      "name": "Polteageist-Antique",
+      "pikalytics_slug": "Polteageist-Antique"
+    },
+    {
+      "id": "primarina",
+      "name": "Primarina",
+      "pikalytics_slug": "Primarina"
+    },
+    {
+      "id": "quaquaval",
+      "name": "Quaquaval",
+      "pikalytics_slug": "Quaquaval"
+    },
+    {
+      "id": "raichu",
+      "name": "Raichu",
+      "pikalytics_slug": "Raichu"
+    },
+    {
+      "id": "raichualola",
+      "name": "Raichu-Alola",
+      "pikalytics_slug": "Raichu-Alola"
+    },
+    {
+      "id": "rampardos",
+      "name": "Rampardos",
+      "pikalytics_slug": "Rampardos"
+    },
+    {
+      "id": "reuniclus",
+      "name": "Reuniclus",
+      "pikalytics_slug": "Reuniclus"
+    },
+    {
+      "id": "rhyperior",
+      "name": "Rhyperior",
+      "pikalytics_slug": "Rhyperior"
+    },
+    {
+      "id": "roserade",
+      "name": "Roserade",
+      "pikalytics_slug": "Roserade"
+    },
+    {
+      "id": "rotom",
+      "name": "Rotom",
+      "pikalytics_slug": "Rotom"
+    },
+    {
+      "id": "rotomfan",
+      "name": "Rotom-Fan",
+      "pikalytics_slug": "Rotom-Fan"
+    },
+    {
+      "id": "rotomfrost",
+      "name": "Rotom-Frost",
+      "pikalytics_slug": "Rotom-Frost"
+    },
+    {
+      "id": "rotomheat",
+      "name": "Rotom-Heat",
+      "pikalytics_slug": "Rotom-Heat"
+    },
+    {
+      "id": "rotommow",
+      "name": "Rotom-Mow",
+      "pikalytics_slug": "Rotom-Mow"
+    },
+    {
+      "id": "rotomwash",
+      "name": "Rotom-Wash",
+      "pikalytics_slug": "Rotom-Wash"
+    },
+    {
+      "id": "runerigus",
+      "name": "Runerigus",
+      "pikalytics_slug": "Runerigus"
+    },
+    {
+      "id": "sableye",
+      "name": "Sableye",
+      "pikalytics_slug": "Sableye"
+    },
+    {
+      "id": "salazzle",
+      "name": "Salazzle",
+      "pikalytics_slug": "Salazzle"
+    },
+    {
+      "id": "samurott",
+      "name": "Samurott",
+      "pikalytics_slug": "Samurott"
+    },
+    {
+      "id": "samurotthisui",
+      "name": "Samurott-Hisui",
+      "pikalytics_slug": "Samurott-Hisui"
+    },
+    {
+      "id": "sandaconda",
+      "name": "Sandaconda",
+      "pikalytics_slug": "Sandaconda"
+    },
+    {
+      "id": "scizor",
+      "name": "Scizor",
+      "pikalytics_slug": "Scizor"
+    },
+    {
+      "id": "scovillain",
+      "name": "Scovillain",
+      "pikalytics_slug": "Scovillain"
+    },
+    {
+      "id": "serperior",
+      "name": "Serperior",
+      "pikalytics_slug": "Serperior"
+    },
+    {
+      "id": "sharpedo",
+      "name": "Sharpedo",
+      "pikalytics_slug": "Sharpedo"
+    },
+    {
+      "id": "simipour",
+      "name": "Simipour",
+      "pikalytics_slug": "Simipour"
+    },
+    {
+      "id": "simisage",
+      "name": "Simisage",
+      "pikalytics_slug": "Simisage"
+    },
+    {
+      "id": "simisear",
+      "name": "Simisear",
+      "pikalytics_slug": "Simisear"
+    },
+    {
+      "id": "sinistcha",
+      "name": "Sinistcha",
+      "pikalytics_slug": "Sinistcha"
+    },
+    {
+      "id": "sinistchamasterpiece",
+      "name": "Sinistcha-Masterpiece",
+      "pikalytics_slug": "Sinistcha-Masterpiece"
+    },
+    {
+      "id": "skarmory",
+      "name": "Skarmory",
+      "pikalytics_slug": "Skarmory"
+    },
+    {
+      "id": "skeledirge",
+      "name": "Skeledirge",
+      "pikalytics_slug": "Skeledirge"
+    },
+    {
+      "id": "slowbro",
+      "name": "Slowbro",
+      "pikalytics_slug": "Slowbro"
+    },
+    {
+      "id": "slowbrogalar",
+      "name": "Slowbro-Galar",
+      "pikalytics_slug": "Slowbro-Galar"
+    },
+    {
+      "id": "slowking",
+      "name": "Slowking",
+      "pikalytics_slug": "Slowking"
+    },
+    {
+      "id": "slowkinggalar",
+      "name": "Slowking-Galar",
+      "pikalytics_slug": "Slowking-Galar"
+    },
+    {
+      "id": "slurpuff",
+      "name": "Slurpuff",
+      "pikalytics_slug": "Slurpuff"
+    },
+    {
+      "id": "sneasler",
+      "name": "Sneasler",
+      "pikalytics_slug": "Sneasler"
+    },
+    {
+      "id": "snorlax",
+      "name": "Snorlax",
+      "pikalytics_slug": "Snorlax"
+    },
+    {
+      "id": "spiritomb",
+      "name": "Spiritomb",
+      "pikalytics_slug": "Spiritomb"
+    },
+    {
+      "id": "starmie",
+      "name": "Starmie",
+      "pikalytics_slug": "Starmie"
+    },
+    {
+      "id": "steelix",
+      "name": "Steelix",
+      "pikalytics_slug": "Steelix"
+    },
+    {
+      "id": "stunfisk",
+      "name": "Stunfisk",
+      "pikalytics_slug": "Stunfisk"
+    },
+    {
+      "id": "stunfiskgalar",
+      "name": "Stunfisk-Galar",
+      "pikalytics_slug": "Stunfisk-Galar"
+    },
+    {
+      "id": "sylveon",
+      "name": "Sylveon",
+      "pikalytics_slug": "Sylveon"
+    },
+    {
+      "id": "talonflame",
+      "name": "Talonflame",
+      "pikalytics_slug": "Talonflame"
+    },
+    {
+      "id": "tauros",
+      "name": "Tauros",
+      "pikalytics_slug": "Tauros"
+    },
+    {
+      "id": "taurospaldeaaqua",
+      "name": "Tauros-Paldea-Aqua",
+      "pikalytics_slug": "Tauros-Paldea-Aqua"
+    },
+    {
+      "id": "taurospaldeablaze",
+      "name": "Tauros-Paldea-Blaze",
+      "pikalytics_slug": "Tauros-Paldea-Blaze"
+    },
+    {
+      "id": "taurospaldeacombat",
+      "name": "Tauros-Paldea-Combat",
+      "pikalytics_slug": "Tauros-Paldea-Combat"
+    },
+    {
+      "id": "tinkaton",
+      "name": "Tinkaton",
+      "pikalytics_slug": "Tinkaton"
+    },
+    {
+      "id": "torkoal",
+      "name": "Torkoal",
+      "pikalytics_slug": "Torkoal"
+    },
+    {
+      "id": "torterra",
+      "name": "Torterra",
+      "pikalytics_slug": "Torterra"
+    },
+    {
+      "id": "toucannon",
+      "name": "Toucannon",
+      "pikalytics_slug": "Toucannon"
+    },
+    {
+      "id": "toxapex",
+      "name": "Toxapex",
+      "pikalytics_slug": "Toxapex"
+    },
+    {
+      "id": "toxicroak",
+      "name": "Toxicroak",
+      "pikalytics_slug": "Toxicroak"
+    },
+    {
+      "id": "trevenant",
+      "name": "Trevenant",
+      "pikalytics_slug": "Trevenant"
+    },
+    {
+      "id": "tsareena",
+      "name": "Tsareena",
+      "pikalytics_slug": "Tsareena"
+    },
+    {
+      "id": "typhlosion",
+      "name": "Typhlosion",
+      "pikalytics_slug": "Typhlosion"
+    },
+    {
+      "id": "typhlosionhisui",
+      "name": "Typhlosion-Hisui",
+      "pikalytics_slug": "Typhlosion-Hisui"
+    },
+    {
+      "id": "tyranitar",
+      "name": "Tyranitar",
+      "pikalytics_slug": "Tyranitar"
+    },
+    {
+      "id": "tyrantrum",
+      "name": "Tyrantrum",
+      "pikalytics_slug": "Tyrantrum"
+    },
+    {
+      "id": "umbreon",
+      "name": "Umbreon",
+      "pikalytics_slug": "Umbreon"
+    },
+    {
+      "id": "vanilluxe",
+      "name": "Vanilluxe",
+      "pikalytics_slug": "Vanilluxe"
+    },
+    {
+      "id": "vaporeon",
+      "name": "Vaporeon",
+      "pikalytics_slug": "Vaporeon"
+    },
+    {
+      "id": "venusaur",
+      "name": "Venusaur",
+      "pikalytics_slug": "Venusaur"
+    },
+    {
+      "id": "victreebel",
+      "name": "Victreebel",
+      "pikalytics_slug": "Victreebel"
+    },
+    {
+      "id": "vivillon",
+      "name": "Vivillon",
+      "pikalytics_slug": "Vivillon"
+    },
+    {
+      "id": "vivillonfancy",
+      "name": "Vivillon-Fancy",
+      "pikalytics_slug": "Vivillon-Fancy"
+    },
+    {
+      "id": "vivillonpokeball",
+      "name": "Vivillon-Pokeball",
+      "pikalytics_slug": "Vivillon-Pokeball"
+    },
+    {
+      "id": "volcarona",
+      "name": "Volcarona",
+      "pikalytics_slug": "Volcarona"
+    },
+    {
+      "id": "watchog",
+      "name": "Watchog",
+      "pikalytics_slug": "Watchog"
+    },
+    {
+      "id": "weavile",
+      "name": "Weavile",
+      "pikalytics_slug": "Weavile"
+    },
+    {
+      "id": "whimsicott",
+      "name": "Whimsicott",
+      "pikalytics_slug": "Whimsicott"
+    },
+    {
+      "id": "wyrdeer",
+      "name": "Wyrdeer",
+      "pikalytics_slug": "Wyrdeer"
+    },
+    {
+      "id": "zoroark",
+      "name": "Zoroark",
+      "pikalytics_slug": "Zoroark"
+    },
+    {
+      "id": "zoroarkhisui",
+      "name": "Zoroark-Hisui",
+      "pikalytics_slug": "Zoroark-Hisui"
+    }
+  ],
+  "sample_urls": [
+    "https://www.pikalytics.com/pokedex/gen9championsvgc2026regma/Abomasnow?l=en",
+    "https://www.pikalytics.com/pokedex/gen9championsvgc2026regma/Kingambit?l=en",
+    "https://www.pikalytics.com/pokedex/gen9championsvgc2026regma/Mimikyu?l=en"
+  ]
+}

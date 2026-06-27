@@ -1,0 +1,59 @@
+Garchomp @ Focus Sash  
+Ability: Rough Skin  
+Level: 50  
+EVs: 2 HP / 32 Atk / 32 Spe  
+Adamant Nature  
+- Rock Tomb  
+- Stealth Rock  
+- Earthquake  
+- Scale Shot
+
+Dragonite-Mega @ Dragoninite  
+Ability: Multiscale  
+Level: 50  
+EVs: 31 HP / 1 Def / 15 SpA / 1 SpD / 18 Spe  
+Modest Nature  
+- Air Slash  
+- Flamethrower  
+- Substitute  
+- Roost
+
+Meowscarada @ Choice Scarf  
+Ability: Protean  
+Level: 50  
+EVs: 32 Atk / 2 Def / 32 Spe  
+Jolly Nature  
+- Flower Trick  
+- Knock Off  
+- Play Rough  
+- U-turn
+
+Aegislash @ Leftovers  
+Ability: Stance Change  
+Level: 50  
+EVs: 32 HP / 30 Atk / 1 Def / 1 SpD / 2 Spe  
+Adamant Nature  
+- Poltergeist  
+- Shadow Sneak  
+- King's Shield  
+- Swords Dance
+
+Archaludon @ Sitrus Berry  
+Ability: Stamina  
+Level: 50  
+EVs: 32 HP / 20 Def / 5 SpA / 9 SpD  
+Bold Nature  
+- Thunderbolt  
+- Stealth Rock  
+- Flash Cannon  
+- Draco Meteor
+
+Floette-Mega (F) @ Floettite  
+Ability: Fairy Aura  
+Level: 50  
+EVs: 32 HP / 13 Def / 1 SpD / 20 Spe  
+Timid Nature  
+- Moonblast  
+- Charm  
+- Calm Mind  
+- Synthesis

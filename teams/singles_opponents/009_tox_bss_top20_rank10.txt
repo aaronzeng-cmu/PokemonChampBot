@@ -1,0 +1,59 @@
+Hippowdon @ Leftovers  
+Ability: Sand Stream  
+Level: 50  
+EVs: 32 HP / 15 Def / 19 SpD  
+Impish Nature  
+- Earthquake  
+- Yawn  
+- Protect  
+- Slack Off
+
+Glimmora-Mega @ Glimmoranite  
+Ability: Adaptability  
+Level: 50  
+EVs: 1 HP / 1 Def / 32 SpA / 32 Spe  
+Modest Nature  
+- Power Gem  
+- Sludge Wave  
+- Earth Power  
+- Spiky Shield
+
+Meowscarada @ Choice Scarf  
+Ability: Protean  
+Level: 50  
+EVs: 24 HP / 12 Atk / 11 Def / 19 Spe  
+Jolly Nature  
+- Flower Trick  
+- U-turn  
+- Toxic Spikes  
+- Trick
+
+Archaludon @ Sitrus Berry  
+Ability: Stamina  
+Level: 50  
+EVs: 32 HP / 3 Def / 12 SpA / 16 SpD / 3 Spe  
+Bold Nature  
+- Stealth Rock  
+- Roar  
+- Thunderbolt  
+- Draco Meteor
+
+Conkeldurr @ Focus Sash  
+Ability: Sheer Force  
+Level: 50  
+EVs: 2 HP / 32 Atk / 32 Spe  
+Adamant Nature  
+- Close Combat  
+- Ice Punch  
+- Mach Punch  
+- Poison Jab
+
+Starmie-Mega @ Starminite  
+Ability: Huge Power  
+Level: 50  
+EVs: 32 HP / 17 Atk / 2 Def / 15 Spe  
+Adamant Nature  
+- Liquidation  
+- Bulk Up  
+- Rapid Spin  
+- Recover

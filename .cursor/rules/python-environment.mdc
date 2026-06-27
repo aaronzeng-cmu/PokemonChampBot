@@ -1,0 +1,45 @@
+---
+description: Use the dedicated PokemonChampBot conda environment for all Python work in this repo
+alwaysApply: true
+---
+
+# Python environment (PokemonChampBot)
+
+This project uses a **dedicated conda environment**, not `CSFpred` or other global envs.
+
+| Setting | Value |
+|---------|--------|
+| **Name** | `PokemonChampBot` |
+| **Python** | 3.11 |
+| **Prefix** | `C:\Users\Aaron\miniconda3\envs\PokemonChampBot` |
+| **Interpreter** | `C:\Users\Aaron\miniconda3\envs\PokemonChampBot\python.exe` |
+
+## Activate before running Python
+
+```bash
+conda activate PokemonChampBot
+```
+
+Or recreate from the repo root:
+
+```bash
+conda env create -f environment.yml
+conda activate PokemonChampBot
+```
+
+## Agent / terminal commands
+
+When running scripts, tests, training, or `pip install` in this workspace:
+
+1. Activate `PokemonChampBot` first.
+2. Run commands from the project root: `c:\Projects\Fun\PokemonChampBot`.
+3. Use `python -m src.training.train_curriculum` or `python scripts/smoke_connect.py` (not a different env).
+
+## Dependencies
+
+Install or update with:
+
+```bash
+conda activate PokemonChampBot
+pip install -r requirements.txt
+```

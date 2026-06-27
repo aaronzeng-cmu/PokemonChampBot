@@ -1,0 +1,103 @@
+{
+    "_meta": {
+    "description": "Fill every [null, null] with (x, y). Capture UI states with: python -m src.cv_bridge.emulator_bridge capture. Mark coordinates offline with: python -m src.cv_bridge.emulator_bridge annotate",
+    "coordinate_system": "Landscape display pixels after EmulatorBridge rotation (typically 1920x1080).",
+    "format": "game",
+    "notes": [
+      "Indices match src/doubles/battle/canonical_inference.py and action_space_spec.py.",
+      "Move slots 1-4 are canonical (alphabetical) slots, not fixed move names.",
+      "Bench/switch slots 1-6 are 1-based team roster positions from your pasted team.",
+      "Target offsets: ally_slot_b=-2, ally_slot_a=-1, default=0, opp_slot_a=1, opp_slot_b=2."
+    ]
+  },
+
+  "_action_space_reference": {
+    "per_slot_size": 107,
+    "slot0_head": "ca0 (active slot A / pos 0)",
+    "slot1_head": "ca1 (active slot B / pos 1)",
+    "index_0": "pass — no action / skip slot",
+    "index_1_to_6": "switch -> bench slot N (team roster position)",
+    "index_7_plus": "move: decode via move_slot (1-4), target_offset (-2..2), mega, tera",
+    "move_index_formula": "base = 7 + 5*(move_slot-1) + (target_offset+2); +20 mega; +80 tera",
+    "teampreview_output": "/team ABCD — four 1-based roster slots (2 leads + 2 backline)"
+  },
+
+  "teampreview": {
+    "_description": "Team PreviewModel picks 4 of 6; map roster positions 1-6 on the team sheet.",
+    "roster_slot_1": [null, null],
+    "roster_slot_2": [null, null],
+    "roster_slot_3": [null, null],
+    "roster_slot_4": [null, null],
+    "roster_slot_5": [null, null],
+    "roster_slot_6": [null, null],
+    "confirm_selection": [null, null],
+    "back": [null, null]
+  },
+
+  "battle": {
+    "_description": "In-battle taps to execute decoded (ca0, ca1) pairs. Doubles: command slot A then slot B in order; no slot-select tap.",
+
+    "moves": {
+      "_description": "Canonical move slots 1-4 for whichever active is currently being commanded (A, then B in doubles).",
+      "move_1": [null, null],
+      "move_2": [null, null],
+      "move_3": [null, null],
+      "move_4": [null, null]
+    },
+
+    "gimmicks": {
+      "_description": "Tap before the move when decode reports mega=true or tera=true.",
+      "mega": [null, null],
+      "tera": [null, null]
+    },
+
+    "switch": {
+      "_description": "Switch flow: Pokémon button -> teampreview.roster_slot_N -> popup_offset.switch_in (relative to row tap).",
+      "popup_offset": {
+        "_description": "Offsets from the bench row tap (same coords as teampreview.roster_slot_N). Calibrate on roster row 3 screenshot.",
+        "reference_roster_slot": 3,
+        "switch_in": [null, null],
+        "cancel": [null, null]
+      },
+      "back": [null, null]
+    },
+
+    "targets": {
+      "_description": "Field target picker after a move that needs a target. default needs no tap.",
+      "ally_slot_a": [null, null],
+      "ally_slot_b": [null, null],
+      "opp_slot_a": [null, null],
+      "opp_slot_b": [null, null]
+    },
+
+    "turn_flow": {
+      "_description": "End-of-turn confirmation and navigation.",
+      "confirm_turn": [null, null],
+      "back": [null, null],
+      "pass_or_skip": [null, null]
+    }
+  },
+
+  "action_executor_sequence": {
+    "_description": "Reference only — typical tap order per decoded slot action (not coordinates).",
+    "pass": [],
+    "switch": ["main_menu.pokemon_switch_menu", "teampreview.roster_slot_N", "switch.popup_offset.switch_in (relative)"],
+    "move_default_target": ["optional:gimmicks.mega|tera", "battle.moves.move_N", "battle.turn_flow.confirm_turn"],
+    "move_with_target": ["optional:gimmicks.mega|tera", "battle.moves.move_N", "battle.targets.<target>", "battle.turn_flow.confirm_turn"],
+    "force_switch": ["switch.bench_N", "battle.turn_flow.confirm_turn"]
+  },
+
+  "perception_regions": {
+    "_description": "Optional CV regions (x, y, width, height) for future perception module. Use null until mapped.",
+    "decision_state_banner": [null, null, null, null],
+    "turn_timer": [null, null, null, null],
+    "active_slot_a_hp": [null, null, null, null],
+    "active_slot_b_hp": [null, null, null, null],
+    "opp_slot_a_hp": [null, null, null, null],
+    "opp_slot_b_hp": [null, null, null, null],
+    "move_panel_visible": [null, null, null, null],
+    "switch_menu_visible": [null, null, null, null],
+    "target_overlay_visible": [null, null, null, null],
+    "teampreview_visible": [null, null, null, null]
+  }
+}

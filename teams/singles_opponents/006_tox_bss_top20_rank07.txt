@@ -1,0 +1,59 @@
+Scizor-Mega @ Scizorite  
+Ability: Technician  
+Level: 50  
+EVs: 26 HP / 32 Atk / 8 Spe  
+Adamant Nature  
+- U-turn  
+- Bullet Punch  
+- Swords Dance  
+- Roost
+
+Gyarados @ Leftovers  
+Ability: Intimidate  
+Level: 50  
+EVs: 31 HP / 32 Def / 3 Spe  
+Impish Nature  
+- Waterfall  
+- Thunder Wave  
+- Power Whip  
+- Avalanche
+
+Gengar-Mega @ Gengarite  
+Ability: Shadow Tag  
+Level: 50  
+EVs: 12 HP / 23 SpA / 31 Spe  
+Modest Nature  
+- Shadow Ball  
+- Sludge Wave  
+- Nasty Plot  
+- Protect
+
+Hippowdon @ Sitrus Berry  
+Ability: Sand Stream  
+Level: 50  
+EVs: 32 HP / 22 Def / 12 SpD  
+Impish Nature  
+- Stealth Rock  
+- Yawn  
+- Earthquake  
+- Slack Off
+
+Primarina @ Fairy Feather  
+Ability: Torrent  
+Level: 50  
+EVs: 32 HP / 24 SpA / 10 Spe  
+Modest Nature  
+- Sparkling Aria  
+- Aqua Jet  
+- Moonblast  
+- Calm Mind
+
+Meowscarada @ Choice Scarf  
+Ability: Protean  
+Level: 50  
+EVs: 2 HP / 32 Atk / 32 Spe  
+Adamant Nature  
+- Flower Trick  
+- Thunder Punch  
+- U-turn  
+- Knock Off

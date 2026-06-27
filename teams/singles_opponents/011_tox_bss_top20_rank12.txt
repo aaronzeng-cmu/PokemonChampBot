@@ -1,0 +1,59 @@
+Scovillain-Mega @ Scovillainite  
+Ability: Spicy Spray  
+Level: 50  
+EVs: 31 HP / 2 Atk / 32 SpD / 1 Spe  
+Adamant Nature  
+- Flare Blitz  
+- Leaf Storm  
+- Leech Seed  
+- Substitute
+
+Archaludon @ Sitrus Berry  
+Ability: Stamina  
+Level: 50  
+EVs: 32 HP / 1 Def / 1 SpA / 32 SpD  
+Bold Nature  
+- Draco Meteor  
+- Dragon Tail  
+- Stealth Rock  
+- Thunder Wave
+
+Basculegion (M) @ Choice Scarf  
+Ability: Adaptability  
+Level: 50  
+EVs: 32 Atk / 2 Def / 32 Spe  
+Adamant Nature  
+- Wave Crash  
+- Last Respects  
+- Aqua Jet  
+- Flip Turn
+
+Ceruledge @ Focus Sash  
+Ability: Weak Armor  
+Level: 50  
+EVs: 1 HP / 32 Atk / 1 Def / 32 Spe  
+Adamant Nature  
+- Poltergeist  
+- Close Combat  
+- Swords Dance  
+- Shadow Sneak
+
+Corviknight @ Leftovers  
+Ability: Pressure  
+Level: 50  
+EVs: 32 HP / 28 SpD / 6 Spe  
+Careful Nature  
+- Brave Bird  
+- Bulk Up  
+- Roost  
+- Taunt
+
+Greninja-Mega @ Greninjite  
+Ability: Protean  
+Level: 50  
+EVs: 16 HP / 2 Def / 27 SpA / 21 Spe  
+Modest Nature  
+- Hydro Pump  
+- Grass Knot  
+- Ice Beam  
+- Sludge Wave
