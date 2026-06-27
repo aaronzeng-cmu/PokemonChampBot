@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import json
+import logging
+import traceback
 from collections import deque
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
 
@@ -51,6 +54,8 @@ from src.doubles.evaluation.battle_inference_trace import (
 )
 from src.core.model.transformer_bot import load_model
 from src.doubles.players.preview_orchestrator import PreviewOrchestrator
+
+_logger = logging.getLogger(__name__)
 
 
 class TransformerPlayer(Player):
@@ -102,6 +107,30 @@ class TransformerPlayer(Player):
         if self.trace_inference:
             self._teampreview_cmds[battle.battle_tag] = cmd
         return cmd
+
+    def _log_crash(self, battle: DoubleBattle, where: str, exc: Exception) -> None:
+        """Append a full traceback to a crash file so a forfeit-avoiding random
+        fallback can still be debugged offline. Never raises."""
+        try:
+            from config.settings import ROOT_DIR
+
+            crash_dir = Path(ROOT_DIR) / "logs" / "crashes"
+            crash_dir.mkdir(parents=True, exist_ok=True)
+            stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+            tag = getattr(battle, "battle_tag", "unknown")
+            turn = getattr(battle, "turn", "?")
+            path = crash_dir / f"crash_{stamp}_{where}.log"
+            with path.open("a", encoding="utf-8") as fh:
+                fh.write(
+                    f"=== {datetime.now(timezone.utc).isoformat()} "
+                    f"site={where} battle={tag} turn={turn} ===\n"
+                )
+                fh.write("".join(traceback.format_exception(exc)))
+                fh.write("\n")
+            _logger.error("TransformerPlayer crash at %s (battle=%s): %s", where, tag, exc)
+        except Exception:
+            # Logging must never be the thing that crashes the battle.
+            _logger.exception("Failed to write crash log for %s", where)
 
     def drain_illegal_top1_events(self) -> list[dict]:
         """Return and clear logged illegal raw top-1 decisions."""
@@ -398,6 +427,20 @@ class TransformerPlayer(Player):
                 )
             return DefaultBattleOrder()
 
+        # Production safety net: a crash here means a forfeit in a live match, so
+        # never let an exception (PyTorch, parsing, out-of-bounds, off-meta data)
+        # escape. Log it for offline debugging and fall back to a legal random move.
+        try:
+            return self._choose_move_impl(battle)
+        except Exception as exc:  # noqa: BLE001 - intentional catch-all
+            self._log_crash(battle, "choose_move", exc)
+            try:
+                return self.choose_random_move(battle)
+            except Exception as fallback_exc:  # noqa: BLE001
+                self._log_crash(battle, "choose_random_move_fallback", fallback_exc)
+                return DefaultBattleOrder()
+
+    def _choose_move_impl(self, battle: DoubleBattle) -> BattleOrder:
         x, trajectory_frames, view, sample_kind, snapshot = self._stacked_input(battle)
         with torch.no_grad():
             logits0, logits1 = self.model(x)

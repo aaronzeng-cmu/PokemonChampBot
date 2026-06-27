@@ -45,11 +45,31 @@ def _filter_other(raw: dict[str, float]) -> dict[str, float]:
     return {k: v for k, v in raw.items() if k and k != _OTHER_LABEL and v > 0}
 
 
-def _usage_list_raw(entries: list[dict]) -> dict[str, float]:
-    """Keep Pikalytics usage % as-is (% of sets with this move/item/ability)."""
-    return _filter_other(
-        {e["name"]: float(e["usage_pct"]) for e in entries if e.get("name")}
-    )
+def _safe_float(value, default: float = 0.0) -> float:
+    """Coerce possibly-missing/garbage meta values without raising."""
+    try:
+        if value is None:
+            return default
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _usage_list_raw(entries) -> dict[str, float]:
+    """Keep Pikalytics usage % as-is (% of sets with this move/item/ability).
+
+    Hardened: off-meta / hand-edited entries may omit ``usage_pct`` or store it
+    as a non-numeric string, so every field access is defensive.
+    """
+    out: dict[str, float] = {}
+    for e in entries or []:
+        if not isinstance(e, dict):
+            continue
+        name = e.get("name")
+        if not name:
+            continue
+        out[name] = _safe_float(e.get("usage_pct"), 0.0)
+    return _filter_other(out)
 
 
 def _blend_weighted_usage(
@@ -369,16 +389,46 @@ class MetaDatabase:
         top = sorted(prior.moves.items(), key=lambda x: -x[1])[:n]
         return dict(top)
 
-    def get_species_prior(self, species: str, *, item: str = "") -> SpeciesPrior:
-        norm = self._pool_key(species)
-        if not item and mega_family_keys(species):
-            return self._get_blended_family_prior(species)
+    def _safe_default_prior(self, species: str) -> SpeciesPrior:
+        """Last-resort prior for species missing/broken in the meta (anti-crash).
 
-        pika_key, raw = self.resolve_pikalytics_entry(species, item=item)
-        prior = self._prior_from_entry(norm, pika_key, raw)
-        if pika_key:
-            prior.form_variants = {pika_key: prior.usage_pct or 0.0}
-        return self._apply_prior_defaults(prior, norm)
+        Used when an off-meta Pokémon (0% usage / meme team) cannot be resolved
+        or a lookup raises. Imputes generic Protect/Tackle moves and Leftovers so
+        the state encoder never crashes the live agent.
+        """
+        try:
+            norm = self._pool_key(species) or (species or "unknown")
+        except Exception:
+            norm = species or "unknown"
+        return SpeciesPrior(
+            species=norm,
+            source="default",
+            moves={"Protect": 50.0, "Tackle": 50.0},
+            items={"Leftovers": 100.0},
+            abilities={"": 100.0},
+            ev_spreads={_DEFAULT_SPREAD: 1.0},
+            tera_types={"Normal": 1.0},
+        )
+
+    def get_species_prior(self, species: str, *, item: str = "") -> SpeciesPrior:
+        try:
+            norm = self._pool_key(species)
+            if not item and mega_family_keys(species):
+                return self._get_blended_family_prior(species)
+
+            pika_key, raw = self.resolve_pikalytics_entry(species, item=item)
+            prior = self._prior_from_entry(norm, pika_key, raw)
+            if pika_key:
+                prior.form_variants = {pika_key: prior.usage_pct or 0.0}
+            return self._apply_prior_defaults(prior, norm)
+        except Exception as exc:
+            logger.warning(
+                "get_species_prior failed for %r (item=%r): %s; using safe default",
+                species,
+                item,
+                exc,
+            )
+            return self._safe_default_prior(species)
 
     def persist_cache(self) -> None:
         """Write in-memory Pikalytics cache (including live fetches) to disk."""
