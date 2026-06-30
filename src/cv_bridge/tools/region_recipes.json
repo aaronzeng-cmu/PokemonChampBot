@@ -53,6 +53,23 @@
       ]
     },
     {
+      "id": "battle_active_nameplates",
+      "screenshot": "20260624_232432.png",
+      "summary": "Player nameplate species text (above each HP bar) for closed-set OCR identity",
+      "regions": [
+        {
+          "path": "shared.perception_regions.player_active_name_slot_a",
+          "title": "Player A — nameplate name",
+          "hint": "Tight box around ONLY the species NAME text in the LEFT bottom HUD panel (just above the green HP bar / level). Exclude level number, gender symbol, and HP digits."
+        },
+        {
+          "path": "shared.perception_regions.player_active_name_slot_b",
+          "title": "Player B — nameplate name",
+          "hint": "Species NAME text in the RIGHT bottom HUD panel (above its HP bar). Name text only; do not overlap slot A."
+        }
+      ]
+    },
+    {
       "id": "teampreview",
       "screenshot": "20260619_041802.png",
       "summary": "Team preview (empty, no selection highlights) — ally + enemy sprites",
@@ -120,6 +137,43 @@
       ]
     },
     {
+      "id": "teamview",
+      "screenshot": "20260628_001307_teaminit1.png",
+      "summary": "Team view 'Moves & More' (2x3 grid) — the 6 mon icons for species template matching",
+      "regions": [
+        {
+          "path": "teamview.icon_slots.slot_1",
+          "title": "Slot 1 — top-LEFT mon icon",
+          "hint": "Tight box around ONLY the sprite icon (top-left cell, Raichu). Exclude the purple panel edge, name text, and the gender/type symbols."
+        },
+        {
+          "path": "teamview.icon_slots.slot_2",
+          "title": "Slot 2 — top-RIGHT mon icon",
+          "hint": "Sprite icon of the top-right cell (Garchomp). Sprite only — no name text."
+        },
+        {
+          "path": "teamview.icon_slots.slot_3",
+          "title": "Slot 3 — middle-LEFT mon icon",
+          "hint": "Sprite icon of the middle-left cell (Azumarill)."
+        },
+        {
+          "path": "teamview.icon_slots.slot_4",
+          "title": "Slot 4 — middle-RIGHT mon icon",
+          "hint": "Sprite icon of the middle-right cell (Grimmsnarl)."
+        },
+        {
+          "path": "teamview.icon_slots.slot_5",
+          "title": "Slot 5 — bottom-LEFT mon icon",
+          "hint": "Sprite icon of the bottom-left cell (Dragonite)."
+        },
+        {
+          "path": "teamview.icon_slots.slot_6",
+          "title": "Slot 6 — bottom-RIGHT mon icon",
+          "hint": "Sprite icon of the bottom-right cell (Staraptor)."
+        }
+      ]
+    },
+    {
       "id": "battle_action_perception",
       "screenshot": "20260624_232439.png",
       "summary": "Perception ROIs on move menu (after Fight) — move panel + timer only",
@@ -169,6 +223,55 @@
           "path": "shared.perception_regions.battle_action_log",
           "title": "Battle action log",
           "hint": "Wide box over the bottom-left/center text line (e.g. 'You defeated ...' or 'Gyarados's Attack rose!'). Make it wide enough for long stat-change sentences; keep height ~1 line to avoid the field below."
+        }
+      ]
+    },
+    {
+      "id": "force_switch_anchor",
+      "screenshot": "20260629_145210_force_switch.png",
+      "summary": "Force-switch / in-battle party screen anchor — red+blue UI around the player name",
+      "regions": [
+        {
+          "path": "shared.perception_regions.force_switch_anchor",
+          "title": "Force-switch anchor — red/blue player-name UI",
+          "hint": "Tight box around the distinctive red+blue UI around the player name (the 'Clams' pill area). Pick a region that ONLY appears on the party / force-switch screen so it cheaply discriminates that screen from normal battle."
+        }
+      ]
+    },
+    {
+      "id": "force_switch_sprites",
+      "screenshot": "20260629_145210_force_switch.png",
+      "summary": "Per-row mon sprite icons on the in-battle party / force-switch screen (for species->row mapping; the list reorders as mons switch in)",
+      "regions": [
+        {
+          "path": "shared.perception_regions.force_switch_sprite_1",
+          "title": "Party row 1 — mon sprite",
+          "hint": "Tight box around ONLY the mon portrait/sprite on the FAR RIGHT of row 1 (top row, Milotic here). Sprite art only — exclude name/HP text and the row panel edge."
+        },
+        {
+          "path": "shared.perception_regions.force_switch_sprite_2",
+          "title": "Party row 2 — mon sprite",
+          "hint": "Sprite on the far right of row 2 (Sinistcha here)."
+        },
+        {
+          "path": "shared.perception_regions.force_switch_sprite_3",
+          "title": "Party row 3 — mon sprite",
+          "hint": "Sprite on the far right of row 3 (Ceruledge here)."
+        },
+        {
+          "path": "shared.perception_regions.force_switch_sprite_4",
+          "title": "Party row 4 — mon sprite",
+          "hint": "Sprite on the far right of row 4 (Ninetales here)."
+        },
+        {
+          "path": "shared.perception_regions.force_switch_sprite_5",
+          "title": "Party row 5 — mon sprite",
+          "hint": "Sprite on the far right of row 5 (faded/empty in this shot — draw the box where the sprite would be)."
+        },
+        {
+          "path": "shared.perception_regions.force_switch_sprite_6",
+          "title": "Party row 6 — mon sprite",
+          "hint": "Sprite on the far right of row 6 (bottom; Incineroar faintly here)."
         }
       ]
     }

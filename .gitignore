@@ -52,6 +52,11 @@ data/raw_logs_singles/*
 # Generated CV sprite-match cache (rebuild via sprite_matcher.build_index)
 src/cv_bridge/assets/icon_index.pkl
 
+# Synthetic species-CNN training set + YOLO run outputs (regenerate via
+# scripts/train_species_classifier.py — multi-hundred-MB, do NOT upload)
+data/species_cls/
+runs/
+
 # ─────────────────────────────────────────────────────────────
 # Pokémon Showdown server / Node
 # ─────────────────────────────────────────────────────────────

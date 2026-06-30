@@ -57,9 +57,12 @@ def preprocess_hp_crop(crop: np.ndarray | None, *, scale: int = 3) -> np.ndarray
     return cv2.copyMakeBorder(binary, 24, 24, 24, 24, cv2.BORDER_CONSTANT, value=255)
 
 
-def _read_text(reader: Any, image: np.ndarray, allowlist: str) -> str:
-    lines = reader.readtext(image, allowlist=allowlist, detail=0)
-    return " ".join(str(line) for line in lines).strip()
+def _read_text(reader: Any, image: np.ndarray, allowlist: str, *, min_conf: float = 0.0) -> str:
+    if min_conf <= 0.0:
+        lines = reader.readtext(image, allowlist=allowlist, detail=0)
+        return " ".join(str(line) for line in lines).strip()
+    items = reader.readtext(image, allowlist=allowlist, detail=1)
+    return " ".join(str(t) for (_b, t, c) in items if float(c) >= min_conf).strip()
 
 
 def read_text_lines(
@@ -67,16 +70,22 @@ def read_text_lines(
     reader: Any,
     *,
     scale: int = 2,
+    min_conf: float = 0.0,
 ) -> str:
     """OCR free-form light text (e.g. the battle log) via whiteness isolation.
 
     No allowlist: returns the joined recognized text, or ``""`` when nothing is read.
+    ``min_conf`` drops tokens EasyOCR isn't confident about (junk on inactive regions
+    typically scores < 0.25 while real text scores > 0.7).
     """
     processed = preprocess_hp_crop(cropped_image, scale=scale)
     if processed is None:
         return ""
-    lines = reader.readtext(processed, detail=0)
-    return " ".join(str(line) for line in lines).strip()
+    if min_conf <= 0.0:
+        lines = reader.readtext(processed, detail=0)
+        return " ".join(str(line) for line in lines).strip()
+    items = reader.readtext(processed, detail=1)
+    return " ".join(str(t) for (_b, t, c) in items if float(c) >= min_conf).strip()
 
 
 def parse_hp_text(
@@ -85,6 +94,7 @@ def parse_hp_text(
     *,
     known_max: int | None = None,
     scale: int = 3,
+    min_conf: float = 0.0,
 ) -> tuple[int, int] | None:
     """Read a ``current/max`` HP fraction from a HUD crop.
 
@@ -96,7 +106,7 @@ def parse_hp_text(
     if processed is None:
         return None
 
-    text = _read_text(reader, processed, _HP_ALLOWLIST)
+    text = _read_text(reader, processed, _HP_ALLOWLIST, min_conf=min_conf)
 
     match = _HP_FRACTION_RE.search(text)
     if match:
@@ -132,13 +142,14 @@ def parse_hp_percent(
     reader: Any,
     *,
     scale: int = 3,
+    min_conf: float = 0.0,
 ) -> float | None:
     """Read an enemy ``NN%`` HP readout. Returns percent in ``[0, 100]`` or ``None``."""
     processed = preprocess_hp_crop(cropped_image, scale=scale)
     if processed is None:
         return None
 
-    text = _read_text(reader, processed, _PERCENT_ALLOWLIST)
+    text = _read_text(reader, processed, _PERCENT_ALLOWLIST, min_conf=min_conf)
 
     match = _PERCENT_RE.search(text)
     if match:

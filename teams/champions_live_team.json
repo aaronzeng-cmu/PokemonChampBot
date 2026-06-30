@@ -1,0 +1,79 @@
+{
+  "name": "Clams",
+  "format": "doubles",
+  "pokemon": [
+    {
+      "species": "sinistcha",
+      "ability": "hospitality",
+      "item": "kasibberry",
+      "moves": [
+        "matchagotcha",
+        "ragepowder",
+        "lifedew",
+        "protect"
+      ],
+      "max_hp": 178
+    },
+    {
+      "species": "ceruledge",
+      "ability": "flashfire",
+      "item": "colburberry",
+      "moves": [
+        "bitterblade",
+        "shadowsneak",
+        "bulkup",
+        "protect"
+      ],
+      "max_hp": 181
+    },
+    {
+      "species": "floetteeternal",
+      "ability": "flowerveil",
+      "item": "floettite",
+      "moves": [
+        "dazzlinggleam",
+        "drainingkiss",
+        "calmmind",
+        "protect"
+      ],
+      "max_hp": 156,
+      "mega": true
+    },
+    {
+      "species": "ninetalesalola",
+      "ability": "snowwarning",
+      "item": "choicescarf",
+      "moves": [
+        "blizzard",
+        "freezedry",
+        "icywind",
+        "roar"
+      ],
+      "max_hp": 150
+    },
+    {
+      "species": "incineroar",
+      "ability": "intimidate",
+      "item": "passhoberry",
+      "moves": [
+        "flareblitz",
+        "darkestlariat",
+        "partingshot",
+        "fakeout"
+      ],
+      "max_hp": 202
+    },
+    {
+      "species": "milotic",
+      "ability": "competitive",
+      "item": "leftovers",
+      "moves": [
+        "muddywater",
+        "lifedew",
+        "hypnosis",
+        "coil"
+      ],
+      "max_hp": 202
+    }
+  ]
+}

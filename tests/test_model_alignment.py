@@ -132,6 +132,103 @@ def test_bench_modeled_from_brought_team_legalizes_switch():
     assert masks["slot_a"][SWITCH_BASE + 1]
 
 
+def _doubles_known_team() -> dict:
+    def mon(species: str, moves: list[str]) -> dict:
+        return {"species": species, "ability": "", "item": "", "moves": moves, "max_hp": 0, "mega": False}
+
+    return {
+        "pokemon": [
+            mon("raichu", ["thunderbolt", "voltswitch", "fakeout", "grassknot"]),
+            mon("garchomp", ["earthquake", "rockslide", "dragonclaw", "protect"]),
+            mon("azumarill", ["liquidation", "playrough", "aquajet", "protect"]),
+            mon("grimmsnarl", ["spiritbreak", "thunderwave", "lightscreen", "reflect"]),
+            mon("dragonite", ["dragonclaw", "extremespeed", "earthquake", "protect"]),
+            mon("staraptor", ["bravebird", "closecombat", "doubleedge", "protect"]),
+        ]
+    }
+
+
+def test_doubles_seeds_leads_and_excludes_onfield_from_switch():
+    """Our chosen leads are active from turn 1, so we never offer to switch one
+    of them in -- even if the live sprite read comes back ``unknown``."""
+    tracker = LiveBattleTracker(battle_format="doubles", player_side="p1")
+    tracker.load_player_team(_doubles_known_team())
+    # Selection order: leads = azumarill + garchomp.
+    tracker.record_brought_ally(["azumarill", "garchomp", "raichu", "grimmsnarl"])
+
+    actives = {s: m.species for s, m in tracker.state.mons.items() if m.active}
+    assert actives == {"p1a": "azumarill", "p1b": "garchomp"}
+
+    # A failed sprite read must not clobber the seeded actives.
+    tracker.update_from_perception(
+        {
+            "state": "TURN_DECISION",
+            "battle_format": "doubles",
+            "ocr": {
+                "player_slot_a": {"species_id": "unknown", "hp": 207, "max_hp": 207},
+                "player_slot_b": {"species_id": "unknown", "hp": 185, "max_hp": 185},
+            },
+        }
+    )
+    actives = {s: m.species for s, m in tracker.state.mons.items() if m.active}
+    assert actives == {"p1a": "azumarill", "p1b": "garchomp"}
+
+    _, masks = tracker.get_model_inputs()
+    assert masks is not None
+    roster = tracker.state.team_roster["p1"]
+    gar_idx = roster.index("garchomp") + 1
+    azu_idx = roster.index("azumarill") + 1
+    # On-field mons are illegal switch targets on both slots.
+    assert not masks["slot_a"][gar_idx] and not masks["slot_b"][gar_idx]
+    assert not masks["slot_a"][azu_idx] and not masks["slot_b"][azu_idx]
+    # ...and a real move is legal (we can fight, not just pass/switch).
+    assert masks["slot_a"][7:].any()
+
+
+def test_fainted_mon_excluded_from_switch_after_party_readout():
+    """A fainted active that's been replaced must not linger as a switch target."""
+    tracker = LiveBattleTracker(battle_format="doubles", player_side="p1")
+    tracker.load_player_team(_doubles_known_team())
+    # leads = staraptor + garchomp (max_hp 186 / garchomp uses default 100 here)
+    tracker.record_brought_ally(["staraptor", "garchomp", "raichu", "azumarill"])
+
+    # Give the team distinct max HPs so the party readout can identify species.
+    for sp, mx in {"staraptor": 186, "garchomp": 185, "raichu": 137, "azumarill": 207}.items():
+        tracker._known_team[sp]["max_hp"] = mx
+    tracker._seed_known_team()
+    tracker.record_brought_ally(["staraptor", "garchomp", "raichu", "azumarill"])
+
+    # Force-switch party screen: garchomp fainted (0/185), raichu chosen.
+    tracker.record_party_readout(
+        [
+            {"slot": 1, "hp": 186, "max_hp": 186, "alive": True},
+            {"slot": 2, "hp": 0, "max_hp": 185, "alive": False},
+            {"slot": 3, "hp": 137, "max_hp": 137, "alive": True},
+            {"slot": 4, "hp": 207, "max_hp": 207, "alive": True},
+        ]
+    )
+    # raichu has replaced garchomp on the field.
+    tracker.update_from_perception(
+        {
+            "state": "TURN_DECISION",
+            "battle_format": "doubles",
+            "ocr": {
+                "player_slot_a": {"species_id": "staraptor", "hp": 186, "max_hp": 186},
+                "player_slot_b": {"species_id": "raichu", "hp": 137, "max_hp": 137},
+            },
+        }
+    )
+
+    roster = tracker.state.team_roster["p1"]
+    gar_idx = roster.index("garchomp") + 1
+    azu_idx = roster.index("azumarill") + 1
+    _, masks = tracker.get_model_inputs()
+    assert masks is not None
+    # Fainted garchomp is illegal; bench azumarill is the only legal switch.
+    assert not masks["slot_a"][gar_idx]
+    assert masks["slot_a"][azu_idx]
+
+
 def test_history_frame_drops_force_switch_flag():
     """Trajectory parity: stored history frame is force-switch-free (turn-start)."""
     state = _singles_state()

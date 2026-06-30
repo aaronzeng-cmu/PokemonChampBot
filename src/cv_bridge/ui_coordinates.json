@@ -172,8 +172,7 @@
       "force_switch": {
         "_description": "Forced replacement after a faint. The party list is already open (no pokemon_switch_menu tap). Tap an alive slot row, then confirm via popup_offset (Switch in / Cancel anchored to that row).",
         "popup_offset": {
-          "_description": "Switch in / Cancel popup deltas from the tapped force_switch.slot_N row. Calibrate with annotate_actions recipe 'battle_force_switch'.",
-          "reference_slot": 3,
+          "_description": "Switch in / Cancel popup deltas from the tapped force_switch.slot_N row. The popup follows the selected row, so this is purely row-relative (verified rows 1-4 against switch_pos3/pos4 captures).",
           "switch_in": [
             140,
             91
@@ -440,6 +439,60 @@
         45,
         115,
         111
+      ],
+      "player_active_name_slot_a": [
+        153,
+        936,
+        180,
+        34
+      ],
+      "player_active_name_slot_b": [
+        550,
+        938,
+        167,
+        40
+      ],
+      "force_switch_anchor": [
+        1542,
+        166,
+        324,
+        52
+      ],
+      "force_switch_sprite_1": [
+        447,
+        230,
+        126,
+        109
+      ],
+      "force_switch_sprite_2": [
+        450,
+        368,
+        120,
+        97
+      ],
+      "force_switch_sprite_3": [
+        459,
+        492,
+        115,
+        99
+      ],
+      "force_switch_sprite_4": [
+        456,
+        621,
+        116,
+        96
+      ],
+      "force_switch_sprite_5": [
+        456,
+        738,
+        116,
+        104
+      ],
+      "force_switch_sprite_6": [
+        454,
+        867,
+        119,
+        107
       ]
     }
   },

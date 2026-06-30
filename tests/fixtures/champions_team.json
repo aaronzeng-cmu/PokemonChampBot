@@ -1,0 +1,50 @@
+{
+  "name": "TestTeam",
+  "format": "doubles",
+  "pokemon": [
+    {
+      "species": "raichu",
+      "ability": "lightningrod",
+      "item": "raichunitey",
+      "moves": ["zapcannon", "fakeout", "focusblast", "protect"],
+      "max_hp": 137,
+      "mega": true
+    },
+    {
+      "species": "garchomp",
+      "ability": "roughskin",
+      "item": "leftovers",
+      "moves": ["outrage", "earthquake", "rocktomb", "poisonjab"],
+      "max_hp": 185
+    },
+    {
+      "species": "azumarill",
+      "ability": "hugepower",
+      "item": "whiteherb",
+      "moves": ["playrough", "aquajet", "superpower", "bellydrum"],
+      "max_hp": 207
+    },
+    {
+      "species": "grimmsnarl",
+      "ability": "prankster",
+      "item": "lightclay",
+      "moves": ["lightscreen", "reflect", "taunt", "partingshot"],
+      "max_hp": 202
+    },
+    {
+      "species": "dragonite",
+      "ability": "multiscale",
+      "item": "sitrusberry",
+      "moves": ["dracometeor", "fireblast", "icebeam", "extremespeed"],
+      "max_hp": 168
+    },
+    {
+      "species": "staraptor",
+      "ability": "intimidate",
+      "item": "staraptite",
+      "moves": ["closecombat", "dualwingbeat", "blazekick", "roost"],
+      "max_hp": 186,
+      "mega": true
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import difflib
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -18,8 +19,43 @@ from src.cv_bridge.ocr_utils import (
     parse_hp_text,
     read_text_lines,
 )
-from src.cv_bridge.sprite_matcher import SpriteMatcher
+from src.cv_bridge.sprite_matcher import SpriteMatcher, _norm_species, mega_forms_in_vocab
 from src.cv_bridge.template_bootstrap import ensure_templates
+
+_SPECIES_CLS_WEIGHTS = (
+    Path(__file__).resolve().parent / "assets" / "species_cls.pt"
+)
+
+# EasyOCR confidence floors. Junk on an inactive region scores < ~0.25; real text
+# scores > ~0.7. HP digits can dip (~0.5 on a tight slot) so HP is gated lightly.
+_LOG_MIN_CONF = 0.40
+_POPUP_MIN_CONF = 0.50
+_HP_MIN_CONF = 0.20
+# Min fraction of the force-switch anchor region filled by the red name-pill
+# colour to treat the screen as the party / force-switch list. Party screens
+# read ~0.80; command/move menus read <0.05, so 0.40 is a wide safety margin.
+_FORCE_SWITCH_ANCHOR_MIN_RED = 0.40
+
+
+def _default_recognizer():
+    """CNN species recognizer (pHash fallback) when trained weights exist."""
+    if _SPECIES_CLS_WEIGHTS.is_file():
+        from src.cv_bridge.species_classifier import SpeciesRecognizer
+
+        return SpeciesRecognizer(weights=_SPECIES_CLS_WEIGHTS)
+    return SpriteMatcher()
+
+
+def _resolve_ocr_gpu(ocr_gpu: bool | None) -> bool:
+    """Default EasyOCR to GPU when CUDA is available; honor an explicit override."""
+    if ocr_gpu is not None:
+        return ocr_gpu
+    try:
+        import torch
+
+        return bool(torch.cuda.is_available())
+    except Exception:
+        return False
 
 GameState = Literal[
     "UNKNOWN",
@@ -118,6 +154,7 @@ class PerceptionModule:
         templates_dir: Path | str | None = None,
         confidence_threshold: float = 0.85,
         ocr_enabled: bool = True,
+        ocr_gpu: bool | None = None,
         sprite_matcher: SpriteMatcher | None = None,
     ):
         self.coords = coordinates or load_ui_coordinates()
@@ -127,9 +164,63 @@ class PerceptionModule:
         ensure_templates(self.templates_dir)
         self.confidence_threshold = confidence_threshold
         self.ocr_enabled = ocr_enabled
-        self.sprite_matcher = sprite_matcher or SpriteMatcher()
+        self.ocr_gpu = _resolve_ocr_gpu(ocr_gpu)
+        self.sprite_matcher = sprite_matcher or _default_recognizer()
         self._templates = self._load_templates()
         self._ocr_reader: Any | None = None
+        # Closed set of our own 6 species (poke-env ids). When set, our active
+        # slots are matched only against these, and nameplate OCR is fuzzy-snapped
+        # to one of them -- removing full-dex sprite confusions ("unknown").
+        # Each closed set also carries the Mega/Primal forms of its members (mons
+        # can Mega Evolve in-battle, changing the on-field sprite) plus a map back
+        # to the roster identity (``floettemega`` -> ``floetteeternal``).
+        self.own_team_species: list[str] = []
+        self._own_team_keys: set[str] = set()
+        self._own_mega_to_base: dict[str, str] = {}
+        self.enemy_team_species: list[str] = []
+        self._enemy_team_keys: set[str] = set()
+        self._enemy_mega_to_base: dict[str, str] = {}
+
+    def _build_closed_set(
+        self, species: list[str] | set[str] | None
+    ) -> tuple[list[str], set[str], dict[str, str]]:
+        """Normalize ids, widen with Mega/Primal forms, and map forms -> base."""
+        ids = [to_id_str(str(s)) for s in (species or []) if str(s).strip()]
+        base_keys = {s for s in ids if s and s != "unknown"}
+        mega_map: dict[str, str] = {}
+        if base_keys:
+            try:
+                vocab = (
+                    self.sprite_matcher.known_species_ids()
+                    if hasattr(self.sprite_matcher, "known_species_ids")
+                    else set()
+                )
+                mega_map = mega_forms_in_vocab(base_keys, vocab)
+            except Exception:  # vocab unavailable -> base-only closed set
+                mega_map = {}
+        keys = set(base_keys) | set(mega_map.keys())
+        return ids, keys, mega_map
+
+    def set_own_team(self, species: list[str] | set[str] | None) -> None:
+        """Constrain our-side active identification to a known closed set."""
+        ids, keys, mega_map = self._build_closed_set(species)
+        self.own_team_species = ids
+        self._own_team_keys = keys
+        self._own_mega_to_base = mega_map
+
+    def set_enemy_team(self, species: list[str] | set[str] | None) -> None:
+        """Constrain enemy-active identification to their team-preview set."""
+        ids, keys, mega_map = self._build_closed_set(species)
+        self.enemy_team_species = ids
+        self._enemy_team_keys = keys
+        self._enemy_mega_to_base = mega_map
+
+    @staticmethod
+    def _canon_species(species_id: str, mega_to_base: dict[str, str]) -> str:
+        """Map a recognized Mega/Primal form back to its roster base id."""
+        if not species_id:
+            return species_id
+        return mega_to_base.get(_norm_species(species_id), species_id)
 
     def _load_templates(self) -> dict[str, np.ndarray]:
         templates: dict[str, np.ndarray] = {}
@@ -143,7 +234,16 @@ class PerceptionModule:
         if self._ocr_reader is None:
             import easyocr
 
-            self._ocr_reader = easyocr.Reader(["en"], gpu=False, verbose=False)
+            try:
+                self._ocr_reader = easyocr.Reader(["en"], gpu=self.ocr_gpu, verbose=False)
+            except Exception as exc:  # CUDA/driver issue -> degrade to CPU
+                if self.ocr_gpu:
+                    print(f"[perception] EasyOCR GPU init failed ({exc!r}); falling back to CPU")
+                    self.ocr_gpu = False
+                    self._ocr_reader = easyocr.Reader(["en"], gpu=False, verbose=False)
+                else:
+                    raise
+            print(f"[perception] EasyOCR reader ready (gpu={self.ocr_gpu})")
         return self._ocr_reader
 
     def _crop_region(self, frame: np.ndarray, region_key: str) -> np.ndarray | None:
@@ -190,15 +290,56 @@ class PerceptionModule:
         except Exception:
             return "unknown"
 
-    def _identify_sprite_crop(self, crop: np.ndarray | None) -> str:
+    def _identify_sprite_crop(
+        self,
+        crop: np.ndarray | None,
+        *,
+        exclude_forms: bool = False,
+        allowed: set[str] | None = None,
+    ) -> str:
         if crop is None or crop.size == 0:
             return "unknown"
         try:
             if not self.sprite_matcher.ready:
                 self.sprite_matcher.build_index()
-            return self.sprite_matcher.identify_sprite(crop)
+            return self.sprite_matcher.identify_sprite(
+                crop, exclude_forms=exclude_forms, allowed=allowed
+            )
         except (FileNotFoundError, RuntimeError):
             return "unknown"
+
+    def _fuzzy_own_species(self, text: str) -> str | None:
+        """Snap a noisy nameplate OCR string to one of our known 6 species.
+
+        Tolerates OCR garble ("Garchompl" -> "garchomp") via difflib ratio over
+        the closed set. Returns ``None`` when nothing is close enough.
+        """
+        if not text or not self.own_team_species:
+            return None
+        norm = re.sub(r"[^a-z0-9]", "", text.lower())
+        if not norm:
+            return None
+        best: str | None = None
+        best_score = 0.0
+        for species in self.own_team_species:
+            score = difflib.SequenceMatcher(None, norm, species).ratio()
+            # Substring containment is a strong signal for run-on OCR lines that
+            # merge two nameplates (e.g. "staraptorandgarchomp").
+            if species in norm:
+                score = max(score, 0.9)
+            if score > best_score:
+                best_score, best = score, species
+        return best if best_score >= 0.6 else None
+
+    def _read_nameplate_species(self, frame: np.ndarray, name_key: str | None) -> str | None:
+        """OCR a player nameplate region and fuzzy-match it to our closed set."""
+        if not name_key:
+            return None
+        crop = self._crop_region(frame, name_key)
+        if crop is None or crop.size == 0:
+            return None
+        raw = self._ocr_crop(crop)
+        return self._fuzzy_own_species(raw)
 
     def parse_team_preview(self, frame: np.ndarray) -> dict[str, list[str]]:
         """Parse ally and enemy teams from team-preview sprites (OCR fallback for ally)."""
@@ -206,9 +347,10 @@ class PerceptionModule:
         enemy_team: list[str] = []
 
         for slot in range(1, 7):
+            # Team preview shows base forms only -- exclude Mega/Primal/Gmax candidates.
             ally_crop = self._crop_teampreview_slot(frame, "ally_sprite_slots", slot)
             if ally_crop is not None and ally_crop.size > 0:
-                ally_id = self._identify_sprite_crop(ally_crop)
+                ally_id = self._identify_sprite_crop(ally_crop, exclude_forms=True)
             else:
                 ally_crop = self._crop_teampreview_slot(frame, "ally_name_slots", slot)
                 if ally_crop is not None and ally_crop.size > 0:
@@ -220,7 +362,7 @@ class PerceptionModule:
 
             enemy_crop = self._crop_teampreview_slot(frame, "enemy_sprite_slots", slot)
             if enemy_crop is not None and enemy_crop.size > 0:
-                enemy_team.append(self._identify_sprite_crop(enemy_crop))
+                enemy_team.append(self._identify_sprite_crop(enemy_crop, exclude_forms=True))
             else:
                 enemy_team.append("unknown")
 
@@ -311,19 +453,37 @@ class PerceptionModule:
         return "move" in text and ("info" in text or "into" in text)
 
     def _detect_force_switch(self, frame: np.ndarray) -> bool:
-        """Forced replacement screen after a faint.
+        """Forced replacement / in-battle party screen.
 
-        The defining feature is the full party list down the left side (the same
-        panel as team preview, but mid-battle and without the "send into battle"
-        prompt). Normal battle screens only ever show the single active mon's HP,
-        so >=2 stacked per-row ``cur/max`` fractions reliably marks the party
-        screen. Reading whole-column at once loses the slash in OCR, so we read
-        the always-present top rows individually. Team preview is checked earlier
-        in ``perceive`` and won't reach here.
+        The party screen shows the opponent's name in a saturated red "Battle
+        Info" pill on the right that the command/move menus never show. We match
+        that pill by *colour* (the UI background), not by OCR-ing the name -- the
+        name is opponent-specific, and OCR here is slow and flaky. This is a
+        sub-millisecond check, so it runs every frame. If the anchor region isn't
+        configured we fall back to the old (expensive) party-HP OCR heuristic.
         """
+        frac = self._force_switch_anchor_red_fraction(frame)
+        if frac is not None:
+            return frac >= _FORCE_SWITCH_ANCHOR_MIN_RED
         if not self.ocr_enabled:
             return False
         return len(self.read_party_slots(frame, max_slots=3)) >= 2
+
+    def _force_switch_anchor_red_fraction(self, frame: np.ndarray) -> float | None:
+        """Fraction of the anchor region filled by the red name-pill colour.
+
+        Returns ``None`` when the ``force_switch_anchor`` region is unconfigured,
+        so callers can fall back. Matching colour (not text) keeps the check
+        opponent-agnostic and template-matching cheap.
+        """
+        crop = self._crop_region(frame, "force_switch_anchor")
+        if crop is None or crop.size == 0:
+            return None
+        hsv = cv2.cvtColor(crop, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(hsv, (0, 90, 90), (12, 255, 255)) | cv2.inRange(
+            hsv, (165, 90, 90), (180, 255, 255)
+        )
+        return float(mask.mean()) / 255.0
 
     def read_party_slots(self, frame: np.ndarray, *, max_slots: int = 6) -> list[dict[str, Any]]:
         """Per-slot party HP for force-switch selection (slot index is 1-based).
@@ -351,6 +511,31 @@ class PerceptionModule:
                 {"slot": slot, "hp": cur, "max_hp": mx, "alive": cur > 0, "hp_text": f"{cur}/{mx}"}
             )
         return slots
+
+    def read_party_species(self, frame: np.ndarray, *, max_slots: int = 6) -> dict[int, str]:
+        """Recognise the mon in each party-screen row by its sprite (1-based row).
+
+        The in-battle party / force-switch list reorders as mons switch in, so the
+        on-screen row order is NOT the static brought order. Reading the per-row
+        sprite icon each time the window is open gives the true row->species map,
+        which callers use to pick a legal (benched, non-active) replacement and to
+        map a voluntary switch target to its current row. Constrained to our closed
+        team set; Mega forms are canonicalised back to the roster base. Returns only
+        rows whose ``force_switch_sprite_N`` region is configured and recognised.
+        """
+        out: dict[int, str] = {}
+        allowed = self._own_team_keys or None
+        for slot in range(1, max(1, min(max_slots, 6)) + 1):
+            crop = self._crop_region(frame, f"force_switch_sprite_{slot}")
+            if crop is None or crop.size == 0:
+                continue
+            species = self._identify_sprite_crop(
+                crop, exclude_forms=allowed is None, allowed=allowed
+            )
+            if not species or species == "unknown":
+                continue
+            out[slot] = self._canon_species(species, self._own_mega_to_base)
+        return out
 
     def _detect_loading(self, frame: np.ndarray) -> bool:
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) if frame.ndim == 3 else frame
@@ -445,11 +630,14 @@ class PerceptionModule:
         # timer and weakly matches the Fight button, so it would otherwise be
         # misread as TURN_DECISION.
         if self._detect_team_preview(frame):
+            counter = self._read_preview_counter(frame)
+            ocr = {"teampreview": counter} if counter else {}
             return PerceptionResult(
                 state="TEAM_PREVIEW",
                 state_confidence=0.99,
                 battle_format="unknown",
                 template_match="teampreview_ocr",
+                ocr=ocr,
                 raw_matches=matches,
             )
 
@@ -558,7 +746,7 @@ class PerceptionModule:
         crop = self._crop_region(frame, "battle_action_log")
         if crop is None or crop.size == 0:
             return None
-        text = read_text_lines(crop, self._get_ocr_reader())
+        text = read_text_lines(crop, self._get_ocr_reader(), min_conf=_LOG_MIN_CONF)
         return text or None
 
     def read_ability_item_popups(self, frame: np.ndarray) -> list[str]:
@@ -575,7 +763,7 @@ class PerceptionModule:
             crop = self._crop_region(frame, key)
             if crop is None or crop.size == 0:
                 continue
-            text = read_text_lines(crop, self._get_ocr_reader())
+            text = read_text_lines(crop, self._get_ocr_reader(), min_conf=_POPUP_MIN_CONF)
             if text:
                 texts.append(text)
         return texts
@@ -593,7 +781,9 @@ class PerceptionModule:
         """Ally slots show ``current/max`` numerals; parse the exact fraction."""
         if hp_crop is None or hp_crop.size == 0 or not self.ocr_enabled:
             return {"hp": None, "max_hp": None, "hp_percent": None, "hp_text": ""}
-        parsed = parse_hp_text(hp_crop, self._get_ocr_reader(), known_max=known_max)
+        parsed = parse_hp_text(
+            hp_crop, self._get_ocr_reader(), known_max=known_max, min_conf=_HP_MIN_CONF
+        )
         if parsed is None:
             return {"hp": None, "max_hp": None, "hp_percent": None, "hp_text": ""}
         cur, mx = parsed
@@ -604,7 +794,11 @@ class PerceptionModule:
         """Enemy slots show a ``NN%`` readout; fall back to bar colour masking."""
         if hp_crop is None or hp_crop.size == 0:
             return {"hp": None, "max_hp": None, "hp_percent": None, "hp_text": ""}
-        pct = parse_hp_percent(hp_crop, self._get_ocr_reader()) if self.ocr_enabled else None
+        pct = (
+            parse_hp_percent(hp_crop, self._get_ocr_reader(), min_conf=_HP_MIN_CONF)
+            if self.ocr_enabled
+            else None
+        )
         if pct is not None:
             return {"hp": None, "max_hp": None, "hp_percent": pct, "hp_text": f"{int(pct)}%"}
         bar_pct = get_hp_percentage_from_bar(hp_crop) * 100.0
@@ -623,6 +817,7 @@ class PerceptionModule:
         *,
         is_enemy: bool = False,
         known_max: int | None = None,
+        name_key: str | None = None,
     ) -> dict[str, Any]:
         hp_crop = self._crop_region(frame, hp_key)
         sprite_crop = self._crop_region(frame, sprite_key)
@@ -632,10 +827,28 @@ class PerceptionModule:
         else:
             hp = self._read_ally_hp(hp_crop, known_max)
 
-        species_id = self._identify_sprite_crop(sprite_crop)
+        # Identify the on-field mon by its icon. With a known closed set (our 6, or
+        # the enemy's team-preview set) we restrict candidates to that set *and its
+        # Mega/Primal forms* (exclude_forms off), then canonicalize a recognized
+        # mega back to its roster base. Without a closed set we stay full-dex with
+        # battle-only forms excluded (the prior behavior). The nameplate is only a
+        # fallback hint for our side because trainers can nickname their mons.
+        name: str | None = None
+        if is_enemy:
+            allowed = self._enemy_team_keys or None
+            mega_to_base = self._enemy_mega_to_base
+        else:
+            allowed = self._own_team_keys or None
+            mega_to_base = self._own_mega_to_base
+            name = self._read_nameplate_species(frame, name_key)
+        species_id = self._identify_sprite_crop(
+            sprite_crop, exclude_forms=allowed is None, allowed=allowed
+        )
+        species_id = self._canon_species(species_id, mega_to_base)
 
         return {
             "species_id": species_id,
+            "name": name,
             "hp_text": hp["hp_text"],
             "hp": hp["hp"],
             "max_hp": hp["max_hp"],
@@ -646,10 +859,16 @@ class PerceptionModule:
         """Read active battle slots: species via sprite match, HP via OCR."""
         data: dict[str, Any] = {
             "player_slot_a": self._extract_slot(
-                frame, "player_active_hp_slot_a", "player_active_sprite_slot_a"
+                frame,
+                "player_active_hp_slot_a",
+                "player_active_sprite_slot_a",
+                name_key="player_active_name_slot_a",
             ),
             "player_slot_b": self._extract_slot(
-                frame, "player_active_hp_slot_b", "player_active_sprite_slot_b"
+                frame,
+                "player_active_hp_slot_b",
+                "player_active_sprite_slot_b",
+                name_key="player_active_name_slot_b",
             ),
             "opp_slot_a": self._extract_slot(
                 frame, "opp_active_hp_slot_a", "opp_active_sprite_slot_a", is_enemy=True
@@ -659,22 +878,24 @@ class PerceptionModule:
             ),
         }
 
-        preview_counter = self._crop_region(frame, "teampreview_selection_counter")
-        if preview_counter is not None:
-            text = self._ocr_crop(preview_counter)
-            pick_match = re.search(r"(\d+)\s*/\s*(\d+)", text)
-            if pick_match:
-                data["teampreview"] = {
-                    "selected": int(pick_match.group(1)),
-                    "required": int(pick_match.group(2)),
-                    "text": text,
-                }
-
-        move_timer = self._crop_region(frame, "decision_state_move_timer")
-        if move_timer is not None:
-            timer_text = self._ocr_crop(move_timer)
-            timer_match = re.search(r"(\d+)", timer_text)
-            if timer_match:
-                data["move_timer"] = int(timer_match.group(1))
+        # NOTE: the team-preview counter and the move timer are intentionally NOT
+        # OCR'd here. extract_battle_data runs every battle frame, and neither is
+        # needed in-battle: the counter only matters on the preview screen (read in
+        # the TEAM_PREVIEW path via _read_preview_counter) and the timer value was
+        # never consumed. State detection uses a cheap brightness check on the
+        # timer region instead. This keeps the hot loop OCR-light.
 
         return data
+
+    def _read_preview_counter(self, frame: np.ndarray) -> dict[str, Any] | None:
+        """OCR the team-preview ``N/M`` selection counter (preview screen only)."""
+        if not self.ocr_enabled:
+            return None
+        crop = self._crop_region(frame, "teampreview_selection_counter")
+        if crop is None or crop.size == 0:
+            return None
+        text = self._ocr_crop(crop)
+        m = re.search(r"(\d+)\s*/\s*(\d+)", text)
+        if not m:
+            return None
+        return {"selected": int(m.group(1)), "required": int(m.group(2)), "text": text}

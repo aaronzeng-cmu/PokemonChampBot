@@ -281,6 +281,24 @@ def _parse_move(norm: str) -> dict[str, Any] | None:
     }
 
 
+def _parse_protect(norm: str) -> dict[str, Any] | None:
+    # Protect-family success line, e.g. "Garchomp protected itself!" (also Detect,
+    # King's Shield, Spiky Shield). This is the only signal that a Protect actually
+    # *activated*; "X used Protect" fires even when it fails, so we key off this.
+    m = re.match(r"(?P<subject>.+?)\s+protected\s+itself", norm, re.IGNORECASE)
+    if not m:
+        return None
+    subject, is_opponent = _split_subject(m.group("subject"))
+    if not subject:
+        return None
+    return {
+        "type": "protect",
+        "target": to_id_str(subject),
+        "target_name": subject,
+        "is_opponent": is_opponent,
+    }
+
+
 def _parse_weather(norm: str) -> dict[str, Any] | None:
     for fragment, weather_id in _WEATHER_RULES:
         if fragment in norm:
@@ -326,6 +344,7 @@ _PARSERS = (
     _parse_stat_change,
     _parse_faint,
     _parse_mega,
+    _parse_protect,
     _parse_status,
     _parse_move,
 )

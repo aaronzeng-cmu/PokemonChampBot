@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import pickle
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,10 @@ _PHASH_WEIGHT = 0.45
 _HIST_WEIGHT = 0.55
 _DEFAULT_MAX_DISTANCE = 0.78
 _DEFAULT_MIN_MARGIN = 0.006
+# Closed-set matching skips the margin gate (the crop is assumed in-set) but still
+# rejects a crop that resembles *no* allowed icon -- an empty / mid-animation slot.
+# Looser than the open-set ceiling so real (backgrounded) on-field sprites pass.
+_DEFAULT_CLOSED_MAX_DISTANCE = 0.92
 
 
 @dataclass(frozen=True)
@@ -41,6 +46,56 @@ class _IndexedSprite:
 
 def _species_id_from_filename(path: Path) -> str:
     return path.stem.lower()
+
+
+# Forms that only ever appear in-battle (Mega/Primal/Gigantamax). Outside battle
+# (team view, team preview) a mon shows its base form, so these are never valid
+# candidates there and only add false matches against base-form sprites.
+_BATTLE_FORM_RE = re.compile(r"(mega[xy]?|primal|gmax|eternamax)$")
+
+
+def _is_battle_only_form(species_id: str) -> bool:
+    return bool(_BATTLE_FORM_RE.search(species_id))
+
+
+def _norm_species(species_id: str) -> str:
+    """Lowercase, alphanumeric-only id so closed-set membership is robust to
+    separators/casing (``Ho-Oh`` -> ``hooh``)."""
+    return re.sub(r"[^a-z0-9]", "", str(species_id).lower())
+
+
+def mega_forms_in_vocab(
+    base_ids: "set[str] | list[str]", vocab: "set[str] | list[str]"
+) -> dict[str, str]:
+    """Map each battle-only form in ``vocab`` to one of ``base_ids`` it belongs to.
+
+    A form's *stem* is its id with the Mega/Primal/etc. suffix stripped
+    (``floettemega`` -> ``floette``). A form is attributed to a base when its stem
+    is a prefix of that base's id, which links irregular pairs the icon names don't
+    share verbatim (e.g. roster ``floetteeternal`` -> form ``floettemega``). Returns
+    ``{form_norm_id: base_id}`` so callers can both widen the closed set and map a
+    recognized mega back to its roster identity.
+    """
+    bases = [b for b in (base_ids or []) if b]
+    base_norms = {b: _norm_species(b) for b in bases}
+    out: dict[str, str] = {}
+    for raw in vocab or []:
+        form = _norm_species(raw)
+        match = _BATTLE_FORM_RE.search(form)
+        if not match:
+            continue
+        stem = form[: match.start()]
+        if not stem:
+            continue
+        best_base: str | None = None
+        for base, bnorm in base_norms.items():
+            if bnorm.startswith(stem):
+                # Prefer the most specific (longest) base id on a tie.
+                if best_base is None or len(bnorm) > len(base_norms[best_base]):
+                    best_base = base
+        if best_base is not None:
+            out[form] = best_base
+    return out
 
 
 def _mask_enemy_background(bgr: np.ndarray) -> np.ndarray:
@@ -186,16 +241,27 @@ class SpriteMatcher:
         index_path: Path | str | None = None,
         max_distance: float = _DEFAULT_MAX_DISTANCE,
         min_margin: float = _DEFAULT_MIN_MARGIN,
+        closed_max_distance: float = _DEFAULT_CLOSED_MAX_DISTANCE,
     ) -> None:
         self.icons_dir = Path(icons_dir or _DEFAULT_ICONS)
         self.index_path = Path(index_path or _DEFAULT_INDEX)
         self.max_distance = max_distance
         self.min_margin = min_margin
+        self.closed_max_distance = closed_max_distance
         self._index: list[_IndexedSprite] = []
 
     @property
     def ready(self) -> bool:
         return bool(self._index)
+
+    def known_species_ids(self) -> set[str]:
+        """Normalized ids of every indexed icon (includes Mega/Primal forms)."""
+        if not self._index:
+            try:
+                self.build_index()
+            except (FileNotFoundError, RuntimeError):
+                return set()
+        return {_norm_species(entry.species_id) for entry in self._index}
 
     def build_index(self, *, force: bool = False) -> int:
         """Build (or load) the icon feature index. Returns entry count."""
@@ -280,7 +346,13 @@ class SpriteMatcher:
             return cropped_image[:, :, :3]
         return cropped_image
 
-    def _rank(self, bgr: np.ndarray) -> list[tuple[float, str]]:
+    def _rank(
+        self,
+        bgr: np.ndarray,
+        *,
+        exclude_forms: bool = False,
+        allowed: set[str] | None = None,
+    ) -> list[tuple[float, str]]:
         if not self._index:
             self.build_index()
         bgr = self._prepare_bgr(bgr)
@@ -288,18 +360,37 @@ class SpriteMatcher:
         query = _features_from_bgr(bgr, mask)
         ranked: list[tuple[float, str]] = []
         for entry in self._index:
+            if exclude_forms and _is_battle_only_form(entry.species_id):
+                continue
+            if allowed is not None and _norm_species(entry.species_id) not in allowed:
+                continue
             distance = _combined_distance(query, (entry.phashes, entry.histograms))
             ranked.append((distance, entry.species_id))
         ranked.sort(key=lambda item: item[0])
         return ranked
 
-    def identify_sprite(self, cropped_image: np.ndarray) -> str:
-        match = self.match_sprite(cropped_image)
+    def identify_sprite(
+        self,
+        cropped_image: np.ndarray,
+        *,
+        exclude_forms: bool = False,
+        allowed: set[str] | None = None,
+    ) -> str:
+        match = self.match_sprite(
+            cropped_image, exclude_forms=exclude_forms, allowed=allowed
+        )
         if match is None:
             return "unknown"
         return match.species_id
 
-    def rank_sprite(self, cropped_image: np.ndarray, *, top_n: int = 10) -> dict[str, Any]:
+    def rank_sprite(
+        self,
+        cropped_image: np.ndarray,
+        *,
+        top_n: int = 10,
+        exclude_forms: bool = False,
+        allowed: set[str] | None = None,
+    ) -> dict[str, Any]:
         empty: dict[str, Any] = {
             "ranked": [],
             "decision": None,
@@ -309,7 +400,9 @@ class SpriteMatcher:
         }
         if cropped_image is None or cropped_image.size == 0:
             return empty
-        ranked = self._rank(self._prepare_bgr(cropped_image))
+        ranked = self._rank(
+            self._prepare_bgr(cropped_image), exclude_forms=exclude_forms, allowed=allowed
+        )
         if not ranked:
             return empty
         best_distance, best_id = ranked[0]
@@ -317,21 +410,43 @@ class SpriteMatcher:
         margin = second_distance - best_distance
         return {
             "ranked": [(species_id, float(dist)) for dist, species_id in ranked[:top_n]],
-            "decision": self.match_sprite(cropped_image),
+            "decision": self.match_sprite(
+                cropped_image, exclude_forms=exclude_forms, allowed=allowed
+            ),
             "best_distance": float(best_distance),
             "best_species_id": best_id,
             "margin": float(margin),
         }
 
-    def match_sprite(self, cropped_image: np.ndarray) -> SpriteMatch | None:
+    def match_sprite(
+        self,
+        cropped_image: np.ndarray,
+        *,
+        exclude_forms: bool = False,
+        allowed: set[str] | None = None,
+    ) -> SpriteMatch | None:
         if cropped_image is None or cropped_image.size == 0:
             return None
-        ranked = self._rank(self._prepare_bgr(cropped_image))
+        ranked = self._rank(
+            self._prepare_bgr(cropped_image),
+            exclude_forms=exclude_forms,
+            allowed=allowed,
+        )
         if not ranked:
             return None
         best_distance, best_id = ranked[0]
         second_distance = ranked[1][0] if len(ranked) > 1 else float("inf")
         margin = second_distance - best_distance
+        # Closed-set matching: the crop is assumed to be one of the allowed species,
+        # so the nearest candidate is the answer and we skip the *margin* gate (which
+        # exists to reject out-of-set full-dex confusions). We still keep a lenient
+        # absolute-distance gate so an empty / mid-animation slot (which resembles no
+        # allowed icon) returns "unknown" instead of latching the nearest species.
+        if allowed is not None:
+            closed_max = getattr(self, "closed_max_distance", _DEFAULT_CLOSED_MAX_DISTANCE)
+            if best_distance > closed_max:
+                return SpriteMatch(species_id="unknown", distance=best_distance, margin=margin)
+            return SpriteMatch(species_id=best_id, distance=best_distance, margin=margin)
         if best_distance > self.max_distance or margin < self.min_margin:
             return SpriteMatch(species_id="unknown", distance=best_distance, margin=margin)
         return SpriteMatch(species_id=best_id, distance=best_distance, margin=margin)
